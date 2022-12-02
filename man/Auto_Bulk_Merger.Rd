@@ -9,7 +9,7 @@ Auto_Bulk_Merger(
   Reference_df = NULL,
   Reference,
   sorting_row = TRUE,
-  based = c("Foward", "Backward"),
+  based = c("Foward", "Backward", "KA"),
   Assigned_Name,
   ...
 )
@@ -23,7 +23,7 @@ Auto_Bulk_Merger(
 
 \item{sorting_row}{Reordering the data.frame based on the sequence of ID in the Reference  <Default: TRUE, i.e., Sorting data.frame by the Reference>}
 
-\item{based}{A logical indicator determining whether to keep or replace the duplicated variables from the prior data.frame based on the sequence of data.frame name listed. If the data.frame names were listed in the sequence of modified version, it is better to specify using "Backward" tracing.}
+\item{based}{A logical indicator determining whether to keep the duplicated columns (i.e., columns with the same names). If "Forward" is passed, the columns with the shared name will be retrieved from the "df_list", vice versa. If "KA" is passed, both duplicated columns will be kept. In the latter scenario, the column with .x is the original column from the df_list and .y for the Reference_df.}
 
 \item{Assigned_Name}{The name for the new merge data.frame}
 }
@@ -31,6 +31,5 @@ Auto_Bulk_Merger(
 Import a merged data.frame into your working environment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
-This function will loop over data in 
-To avoid phaking, the pipeline will automatically detect underpower study and aborpt. Please, check Peduzzi 1996 for calculating statistical powers.
+This function is a bulk merger for data.frames. Users can decide whether to merge based on the structure of the reference data.frame or each individual data.frame within the data list. Users may wish to use the Auto_Importer function in the RHelper.
 }

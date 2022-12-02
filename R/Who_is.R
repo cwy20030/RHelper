@@ -8,6 +8,9 @@
 #' @param DA 0 = do not combine results from MSTP; 1 = combine results from MSTP.
 #' @return A savable report with AIC index
 #' @export
+#' @example
+#' #Who_is("Data.frame") # List all data.frames in the global environment.
+#'
 
 
 Who_is <- function(Type=c("Data.frame","Function","List","Value"),print_out=FALSE,...){
@@ -29,5 +32,5 @@ if(print_out==TRUE){
   print(Out)
 } else {
   Out
-} 
+}
 }

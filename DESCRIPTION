@@ -23,7 +23,6 @@ Collate:
     'Col_Name_Checker.R'
     'CRA.R'
     'DF_Name_Checker.R'
-    'Librarian.R'
     'Name_Checker.R'
     'Naming_Variables.R'
     'Pattern_Search.R'

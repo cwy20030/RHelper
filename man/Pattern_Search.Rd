@@ -4,14 +4,14 @@
 \alias{Pattern_Search}
 \title{A Function to Automatically Search for the Maximum Patterns among Strings}
 \usage{
-Pattern_Search(x, Direction = "Forward", ...)
+Pattern_Search(x, Direction = "Both", Match_All = TRUE, ...)
 }
 \arguments{
 \item{x}{A vector of strings}
 
-\item{Direction}{Patterns search from the begining of each string or backward. <default: "Forward">}
+\item{Direction}{Patterns search from the begining of each string ("Forward"), from the end ("Backward") or "Both" ways. <<default: "Both">}
 
-\item{Encoding}{If .csv files would be imported, one can specify}
+\item{Match_All}{A logical parameter indicating whether to only report patterns matched in all elements in x. If FALSE, all possible patterns will be reported. <default: TRUE>}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
