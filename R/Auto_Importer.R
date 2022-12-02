@@ -1,11 +1,11 @@
 #' A Function to Automatically Import Files in a Folder
 #'
-#' This function will loop over logistic regressions in a data frame specified with at least 1 unadjusted model and an adjusted one, cross-sectionally.
-#' To avoid phaking, the pipeline will automatically detect underpower study and aborpt. Please, check Peduzzi 1996 for calculating statistical powers.
+#' This function imports files with the same file type as specified in bulk. Users are required to provide the directory to the folder containing files to be imported. #' Auto_Importer supports most of the commonly used data format, including .txt .tsv .csv, .xls(x), .sas, .sav . All sheets contained within an excel file will be imported into a data list structure while keeping the assigned sheet names for each sub-list. Users can determine if the imported files should be merged into a data list structure or as separate data.frame.
+#' If unsure, users may be able to determine by simply opening one of the files in notepad++. Common deliminators include tabs "/t" , comma "," , semicolon ";" , and period "." .
 #'
 #' @import readxl haven readr
 #' @param directory Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
-#' @param file_type The type of file to import. Currently, supports  ".tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">
+#' @param file_type The type of file to import. Currently, supports  ".txt .tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">
 #' @param Encoding If .csv files would be imported, one can specify
 #' @param Deliminator If the data is stored in .csv file and the Deliminator is not comma as default, please, specify it. <default: ",">
 #' @param Keyword Specify keywords to import only specific files based on file names <Default: FALSE, i.e., import all>
@@ -38,7 +38,7 @@ Auto_Importer <- function(directory,file_type=".csv",Encoding="UTF-8",Deliminato
 ### Read All files in the directory ###
 ############################################
 
-  if(length(file_type)>1) warnings("Sorry, for the current version, please keep it to one type of files at a time. Or I may throw up.")
+  if(length(file_type)>1) warnings("Sorry, for the current version, please keep it to one type of files at a time. Please, don`t over-feed me.")
 
 
   if(!Keyword==FALSE) {
