@@ -17,7 +17,7 @@ Auto_Importer(
 )
 }
 \arguments{
-\item{directory}{Directory of where the files that you want to import <e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/">}
+\item{directory}{Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">}
 
 \item{file_type}{The type of file to import. Currently, supports  ".tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">}
 

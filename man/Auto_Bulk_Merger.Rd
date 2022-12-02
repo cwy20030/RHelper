@@ -31,6 +31,6 @@ Auto_Bulk_Merger(
 Import a merged data.frame into your working environment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
-This function will loop over data in
+This function will loop over data in 
 To avoid phaking, the pipeline will automatically detect underpower study and aborpt. Please, check Peduzzi 1996 for calculating statistical powers.
 }
