@@ -3,7 +3,7 @@
 #' This is a simple function that will print out values (e.g., strings, names or numbers) while keeping the quotation marks, which were otherwise not retained via paste or cat. This is particularly useful when manually organizing data files or passing co-variates while performing regression models. It can also be helpful when moving large numbers of files via Bash shell (Linux)
 #'
 #' @param x Values to be passed through and printed out in a string with quotes.
-#' @param delim Deliminators to be used to separate individual items within the value x.
+#' @param Delim Deliminators to be used to separate individual items within the value x.
 #' @return A long string with characters in quotation marks
 #' @export
 #' @examples
@@ -16,6 +16,6 @@
 #'
 
 
-Naming_Variables <- function(x,delim=","){
-  return(cat(paste0(shQuote(x),collapse=delim)))
+Naming_Variables <- function(x,Delim=","){
+  return(cat(paste0(shQuote(x),collapse=Delim)))
 }

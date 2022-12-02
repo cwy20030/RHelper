@@ -3,6 +3,7 @@
 export(Auto_Bulk_Merger)
 export(Auto_Importer)
 export(CRA)
+export(Clear_History)
 export(Col_Name_Checker)
 export(DF_Name_Checker)
 export(Naming_Variables)

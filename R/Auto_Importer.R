@@ -1,13 +1,13 @@
 #' A Function to Automatically Import Files in a Folder
 #'
-#' This function imports files with the same file type as specified in bulk. Users are required to provide the directory to the folder containing files to be imported. #' Auto_Importer supports most of the commonly used data format, including .txt .tsv .csv, .xls(x), .sas, .sav . All sheets contained within an excel file will be imported into a data list structure while keeping the assigned sheet names for each sub-list. Users can determine if the imported files should be merged into a data list structure or as separate data.frame.
-#' If unsure, users may be able to determine by simply opening one of the files in notepad++. Common deliminators include tabs "/t" , comma "," , semicolon ";" , and period "." .
+#' This function imports files with the same file type as specified in bulk. Users are required to provide the Directory to the folder containing files to be imported. #' Auto_Importer supports most of the commonly used data format, including .txt .tsv .csv, .xls(x), .sas, .sav . All sheets contained within an excel file will be imported into a data list structure while keeping the assigned sheet names for each sub-list. Users can determine if the imported files should be merged into a data list structure or as separate data.frame.
+#' If unsure, users may be able to determine by simply opening one of the files in notepad++. Common Delims include tabs "/t" , comma "," , semicolon ";" , and period "." .
 #'
 #' @import readxl haven readr
-#' @param directory Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
-#' @param file_type The type of file to import. Currently, supports  ".txt .tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">
+#' @param Directory Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
+#' @param File_Type The type of file to import. Currently, supports  ".txt .tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">
 #' @param Encoding If .csv files would be imported, one can specify
-#' @param Deliminator If the data is stored in .csv file and the Deliminator is not comma as default, please, specify it. <default: ",">
+#' @param Delim If the data is stored in .csv file and the Delim is not comma as default, please, specify it. <default: ",">
 #' @param Keyword Specify keywords to import only specific files based on file names <Default: FALSE, i.e., import all>
 #' @param Exclude Specify keywords to exclude specific files from importation <Default: FALSE, i.e., exclude none>
 #' @param inList Binary operator identify if to import all files into a large list <Default: FALSE, i.e., import each separately into individual dataframe>
@@ -21,32 +21,32 @@
 #'
 
 
-Auto_Importer <- function(directory,file_type=".csv",Encoding="UTF-8",Deliminator=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",...){
+Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",...){
 
 
-  if(file_type==".xls" | file_type==".xlsx") {
+  if(File_Type==".xls" | File_Type==".xlsx") {
   if(!require("readxl",character.only = TRUE)) stop("Package 'readxl' not found")
 
-  } else if(file_type==".sas" | file_type==".sav"){
+  } else if(File_Type==".sas" | File_Type==".sav"){
   if(!require("haven",character.only = TRUE)) stop("Package 'haven' not found")
 
-  } else if(file_type==".tsv"){
+  } else if(File_Type==".tsv"){
     if(!require("readr",character.only = TRUE)) stop("Package 'readr' not found")
   }
 
 ############################################
-### Read All files in the directory ###
+### Read All files in the Directory ###
 ############################################
 
-  if(length(file_type)>1) warnings("Sorry, for the current version, please keep it to one type of files at a time. Please, don`t over-feed me.")
+  if(length(File_Type)>1) warnings("Sorry, for the current version, please keep it to one type of files at a time. Please, don`t over-feed me.")
 
 
   if(!Keyword==FALSE) {
 
-    files = iconv(list.files(path = directory,pattern = paste0("*",file_type)), from="UTF-8", to="LATIN1")
+    files = iconv(list.files(path = Directory,pattern = paste0("*",File_Type)), from="UTF-8", to="LATIN1")
 
     if(length(Keyword)>1){
-      files_original <- iconv(list.files(path = directory,pattern = paste0("*",file_type)), from="UTF-8", to="LATIN1")
+      files_original <- iconv(list.files(path = Directory,pattern = paste0("*",File_Type)), from="UTF-8", to="LATIN1")
 
       files <- rep(list(),length(Keyword))
 
@@ -57,27 +57,27 @@ Auto_Importer <- function(directory,file_type=".csv",Encoding="UTF-8",Deliminato
 
 
 
-      file_dir = iconv(list.files(path=directory,pattern = paste0("*",file_type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
+      file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
 
-      file_names = gsub(x = files,pattern = file_type ,replacement = "")
+      file_names = gsub(x = files,pattern = File_Type ,replacement = "")
 
     } else {
       Exclusion <- grep(pattern = Keyword,files)
       files <- files[Exclusion]
 
-      file_dir = iconv(list.files(path=directory,pattern = paste0("*",file_type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
+      file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
 
-      file_names = gsub(x = files,pattern = file_type ,replacement = "")
+      file_names = gsub(x = files,pattern = File_Type ,replacement = "")
     }
 
 
 
   } else {
 
-files = iconv(list.files(path = directory,pattern = paste0("*",file_type)), from="UTF-8", to="LATIN1")
-file_dir = iconv(list.files(path=directory,pattern = paste0("*",file_type),full.names = TRUE), from="UTF-8", to="LATIN1")
+files = iconv(list.files(path = Directory,pattern = paste0("*",File_Type)), from="UTF-8", to="LATIN1")
+file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")
 
-file_names = gsub(x = files,pattern = file_type ,replacement = "")
+file_names = gsub(x = files,pattern = File_Type ,replacement = "")
 
 }
 
@@ -103,17 +103,17 @@ Exclude_names <- Exclude_names[grep(Exclude,Exclude_names)]
   }
 
 
-if(file_type==".csv"| file_type==".tsv" | file_type==".txt"){
+if(File_Type==".csv"| File_Type==".tsv" | File_Type==".txt"){
   for(i in 1:length(files)){
-    if(file_type==".csv"|file_type==".txt"){
+    if(File_Type==".csv"|File_Type==".txt"){
       if(grepl( "UTF",Encoding, fixed = TRUE)){
-       files_df <- read.csv(file_dir[i],fileEncoding=Encoding,sep = Deliminator)
+       files_df <- read.csv(file_dir[i],fileEncoding=Encoding,sep = Delim)
     } else {
-      files_df <- read.csv(file_dir[i],sep = Deliminator)
+      files_df <- read.csv(file_dir[i],sep = Delim)
     }
       }
 
-    if(file_type==".tsv") files_df <- read_tsv(file_dir[i])
+    if(File_Type==".tsv") files_df <- read_tsv(file_dir[i])
 
     # Bind to a list or import files individually
     if(isFALSE(inList)){
@@ -123,7 +123,7 @@ if(file_type==".csv"| file_type==".tsv" | file_type==".txt"){
     }
   }
 
-}  else if(file_type==".xls" | file_type==".xlsx") {
+}  else if(File_Type==".xls" | File_Type==".xlsx") {
 
   for(i in 1:length(files)){
     sheets <- excel_sheets(file_dir[i])
@@ -155,7 +155,7 @@ if(file_type==".csv"| file_type==".tsv" | file_type==".txt"){
   }
 
 
-  } else if(file_type==".sas") {
+  } else if(File_Type==".sas") {
 
     for(i in 1:length(files)){
       files_df <- read_sas(file_dir[i])
@@ -170,7 +170,7 @@ if(file_type==".csv"| file_type==".tsv" | file_type==".txt"){
     }
 
 
-  }  else if(file_type==".sav") {
+  }  else if(File_Type==".sav") {
 
     for(i in 1:length(files)){
       files_df <- read_spss(file_dir[i])
@@ -184,7 +184,7 @@ if(file_type==".csv"| file_type==".tsv" | file_type==".txt"){
       }
     }
    } else {
-  print("Currently, we do not support ",file_type," !")
+  print("Currently, we do not support ",File_Type," !")
    }
 
 

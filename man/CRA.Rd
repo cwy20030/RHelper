@@ -21,7 +21,7 @@ The function - CRA, will check if the dependent packages required are installed 
 3. Check dependencies and repair missing libraries after downgrading/upgrading R environment without performing automatic transfer for libraries.
 }
 \examples{
-CRA("ggplot2") ***It is very important to keep double quotation marks!
+CRA("ggplot2") ***It is very important to keep the double quotation marks!
 
 
 

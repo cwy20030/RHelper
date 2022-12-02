@@ -1,4 +1,20 @@
+#' A Function to Document Executed Codes by Date with Continuous Time Stamps Separating Different Entries
+#'
+#' This function was designed to facilitate lab note documentation while help maintain a minimum clean history window. Executed codes will be stored automatically in the History folder in the directory assigned.
+#'
+#' @import readr
+#' @param Directory Directory to where the executed codes will be documented. <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
+#' @return
+#' @export
+#' @examples
+#' Clear_History(getwd())
+#'
+#'
+
+
 Clear_History <- function(Directory) {
+
+  if(!require("readr",character.only = TRUE)) stop("Package 'readr' not found")
 
   Directory <- paste0(Directory,"/History")
 
@@ -7,7 +23,7 @@ Clear_History <- function(Directory) {
 
 
   File_Name <- paste0(Sys.Date(),".txt")
-  library(readr)
+
   if(File_Name %in% list.files(Directory)){
     History <- read.delim(paste0(Directory,"/",File_Name),header = FALSE)
     History[[1]] <- as.character(History[[1]])

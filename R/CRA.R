@@ -11,7 +11,7 @@
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 #' @export
 #' @examples
-#' CRA("ggplot2") ***It is very important to keep double quotation marks!
+#' CRA("ggplot2") ***It is very important to keep the double quotation marks!
 #'
 #'
 #'

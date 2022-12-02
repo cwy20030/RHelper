@@ -4,12 +4,12 @@
 \alias{Naming_Variables}
 \title{A function listing out variables to faciliate writing codes or functions}
 \usage{
-Naming_Variables(x, delim = ",")
+Naming_Variables(x, Delim = ",")
 }
 \arguments{
 \item{x}{Values to be passed through and printed out in a string with quotes.}
 
-\item{delim}{Deliminators to be used to separate individual items within the value x.}
+\item{Delim}{Deliminators to be used to separate individual items within the value x.}
 }
 \value{
 A long string with characters in quotation marks
