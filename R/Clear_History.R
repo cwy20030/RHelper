@@ -4,7 +4,7 @@
 #'
 #' @import readr
 #' @param Directory Directory to where the executed codes will be documented. <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
-#' @return
+#' @return Current time stamp
 #' @export
 #' @examples
 #' Clear_History(getwd())
