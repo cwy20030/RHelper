@@ -15,8 +15,8 @@
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 #' @export
 #' @examples
-#'
-#'
+#' Download the folder from
+#' Auto_Importer(Directory_to_Downloads_Folder)
 #'
 #'
 

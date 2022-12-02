@@ -17,7 +17,7 @@ Auto_Importer(
 )
 }
 \arguments{
-\item{directory}{Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">}
+\item{directory}{Directory of where the files that you want to import <e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/">}
 
 \item{file_type}{The type of file to import. Currently, supports  ".tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">}
 
@@ -39,4 +39,10 @@ Import files into your working enviroment in R (i.e., Global Enviroment in R Stu
 \description{
 This function will loop over logistic regressions in a data frame specified with at least 1 unadjusted model and an adjusted one, cross-sectionally.
 To avoid phaking, the pipeline will automatically detect underpower study and aborpt. Please, check Peduzzi 1996 for calculating statistical powers.
+}
+\examples{
+Download the folder from
+Auto_Importer(Directory_to_Downloads_Folder)
+
+
 }
