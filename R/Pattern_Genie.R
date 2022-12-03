@@ -14,15 +14,15 @@
 Pattern_Genie <- function(Decomp){
 
   ######################### Try with all names ###############################
-  dg <-  lapply(1:(length(decomposed_x)-1),function(m){
+  dg <-  lapply(1:(length(Decomp)-1),function(m){
 
-    s <- seq(m+1,length(decomposed_x))
+    s <- seq(m+1,length(Decomp))
 
     dm <-  lapply(s,function(m2){
-      if(length(decomposed_x[[m2-1]])==length(decomposed_x[[m2]])){
-        d <- decomposed_x[[m2-1]] == decomposed_x[[m2]]
+      if(length(Decomp[[m2-1]])==length(Decomp[[m2]])){
+        d <- Decomp[[m2-1]] == Decomp[[m2]]
       } else {
-        d <- decomposed_x[[m2-1]] %in% decomposed_x[[m2]]
+        d <- Decomp[[m2-1]] %in% Decomp[[m2]]
       }
 
       e <- rle(d)$lengths
@@ -30,14 +30,14 @@ Pattern_Genie <- function(Decomp){
       lapply(f,function(g){
         g1 <- sum(e[seq(1,g-1)])+1
         g2 <- sum(e[seq(1,g)])
-        decomposed_x[[m2-1]][g1:g2]
+        Decomp[[m2-1]][g1:g2]
       })
     })
     dm.1 <- unique(unlist(dm,recursive = F))
     dm.name <- unlist(lapply(dm.1,paste0,collapse=""))
 
     dm.sum <- unlist(lapply(dm.1,function(ctest){
-      sum(unlist(lapply(decomposed_x,function(m3){
+      sum(unlist(lapply(Decomp,function(m3){
         h <- ctest %in% m3
         if(!isFALSE(rle(h)$values)) length(rle(h)$length)
       })))
