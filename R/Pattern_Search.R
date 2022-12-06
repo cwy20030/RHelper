@@ -36,7 +36,7 @@ if(Direction=="Backward"){
   if(Method=="PG"){
     dx_max_final <- Pattern_Genie(decomposed_x)
   } else if(Method=="GG"){
-    dx_max_final <- Giant_n_Gnome(decomposed_x)
+    dx_max_final <- Giant_Gnome(decomposed_x)
 }
 
 
@@ -69,7 +69,7 @@ if(Direction=="Both"){
   if(Method=="PG"){
     dx_max_final2 <- Pattern_Genie(decomposed_x)
   } else if(Method=="GG"){
-    dx_max_final2 <- Giant_n_Gnome(decomposed_x)
+    dx_max_final2 <- Giant_Gnome(decomposed_x)
   }
 
 
