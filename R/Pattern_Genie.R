@@ -27,20 +27,22 @@ Pattern_Genie <- function(Decomp){
 
       e <- rle(d)$lengths
       f <- which(e>1)
-      lapply(f,function(g){
+      g0 <- lapply(f,function(g){
         g1 <- sum(e[seq(1,g-1)])+1
         g2 <- sum(e[seq(1,g)])
         Decomp[[m2-1]][g1:g2]
       })
+      g0
     })
     dm.1 <- unique(unlist(dm,recursive = F))
     dm.name <- unlist(lapply(dm.1,paste0,collapse=""))
 
     dm.sum <- unlist(lapply(dm.1,function(ctest){
-      sum(unlist(lapply(Decomp,function(m3){
+      temp <- sum(unlist(lapply(Decomp,function(m3){
         h <- ctest %in% m3
         if(!isFALSE(rle(h)$values)) length(rle(h)$length)
       })))
+      temp
     }))
     names(dm.sum) <- dm.name
     names(dm.sum)[which(dm.sum==length(Decomp))]

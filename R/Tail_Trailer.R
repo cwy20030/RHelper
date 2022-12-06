@@ -1,4 +1,4 @@
-# Tail_Trailer
+# Giant n Gnome
 #
 # This function will loop over strings and find all possible patterns.
 #
@@ -11,7 +11,7 @@
 
 
 
-Tail_Trailer <- function(Decomp){
+Giant_n_Gnome <- function(Decomp){
 
 
 

@@ -5,14 +5,15 @@
 #' @param x A vector of strings
 #' @param Direction Patterns search from the begining of each string ("Forward"), from the end ("Backward") or "Both" ways. <<default: "Both">
 #' @param Match_All A logical parameter indicating whether to only report patterns matched in all elements in x. If FALSE, all possible patterns will be reported. <default: TRUE>
-#' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
+#' @param Method A logical parameter for the search algorithm. There are two algorithms available in the current version: "PG", aka., Pattern_Genie, and "GG", aka Giant_n_Gnome. Pattern_Genie is best suited for multiple patterns that may be present at any given part of a string. Giant_n_Gnome is useful when the patterns desired are at the either end of the string.
+#' @return Reutrn best matched patterns in R (i.e., Global Enviroment in R Studio)
 #' @export
 #'
 
 
 
 
-Pattern_Search <-function(x,Direction="Both",Match_All=TRUE,...) {
+Pattern_Search <-function(x,Direction="Both",Match_All=TRUE,Method="GG",...) {
 
   y <- x
 
@@ -30,8 +31,13 @@ if(Direction=="Backward"){
   decomposed_x<-strsplit(y,"")
 
 ### Pattern Genie ---------------
-  dx_max_final <- Pattern_Genie(decomposed_x)
+  dx_max_final <- NULL
 
+  if(Method=="PG"){
+    dx_max_final <- Pattern_Genie(decomposed_x)
+  } else if(Method=="GG"){
+    dx_max_final <- Giant_n_Gnome(decomposed_x)
+}
 
 
 ######################### Backward ###############################
@@ -58,15 +64,21 @@ if(Direction=="Both"){
 
 
 ### Pattern Genie ---------------
-  dx_max_final2 <- Pattern_Genie(decomposed_x)
+  dx_max_final2 <- NULL
 
-### Reverse ---------------
-dx_max_final2 <- unlist(lapply(lapply(strsplit(dx_max_final2,""),rev),paste0,collapse=""))
+  if(Method=="PG"){
+    dx_max_final2 <- Pattern_Genie(decomposed_x)
+  } else if(Method=="GG"){
+    dx_max_final2 <- Giant_n_Gnome(decomposed_x)
+  }
 
 
   #### Combine Them ---------------------------
 
-  dx_max_final <- unique(c(dx_max_final,dx_max_final2))
+  if(!is.null(dx_max_final2) & !is.null(dx_max_final)){
+    dx_max_final <- unique(c(dx_max_final,dx_max_final2))
+  }
+
 }
 #########################             END                 ###############################
 
@@ -75,7 +87,12 @@ dx_max_final2 <- unlist(lapply(lapply(strsplit(dx_max_final2,""),rev),paste0,col
 
 
 
+if(is.null(dx_max_final)){
 
+  Final_Pattern <- NULL
+  warning("No clear pattern was found! Please, try another algorithm.")
+
+} else {
 #########################     Second Iteration     ###############################
 
 
@@ -92,16 +109,21 @@ TRUE_Len <- sort(unlist(lapply(Retest,function(x){
 #########################             END                 ###############################
 
 
-if(isTRUE(Match_All)){
+
+
+#########################     Return Results    ###############################
+
+
+ if(isTRUE(Match_All)){
   Final_Pattern <- names(TRUE_Len)[which(TRUE_Len == length(x))]
   if(length(Final_Pattern)>1) warning("More than one possible patterns detected")
 } else {
   Final_Pattern <- list()
   Final_Pattern$All <- names(TRUE_Len)[which(TRUE_Len == length(x))]
-  Final_Pattern$Partoal <- names(TRUE_Len)[which(!TRUE_Len == length(x))]
+  Final_Pattern$Partial <- names(TRUE_Len)[which(!TRUE_Len == length(x))]
 }
 
-
+}
 
   # if there is no matching element, return an empty vector, else return the common part
 

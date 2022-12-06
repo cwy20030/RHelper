@@ -14,7 +14,7 @@ Imports:
     reshape2
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
+LazyData: TRUE
 RoxygenNote: 7.2.2
 Collate:
     'Auto_Bulk_Merger.R'
@@ -23,6 +23,7 @@ Collate:
     'Col_Name_Checker.R'
     'CRA.R'
     'DF_Name_Checker.R'
+    'Giant_Gnome.R'
     'Name_Checker.R'
     'Naming_Variables.R'
     'Pattern_Genie.R'
