@@ -8,7 +8,7 @@
 #' @param DA 0 = do not combine results from MSTP; 1 = combine results from MSTP.
 #' @return A savable report with AIC index
 #' @export
-#' @example
+#' @examples
 #' #Who_is("Data.frame") # List all data.frames in the global environment.
 #'
 

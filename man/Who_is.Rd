@@ -24,3 +24,7 @@ A savable report with AIC index
 This function will print out the names of all data.frame, list, or functions in the environment.
 It is particularly useful when wanting to save computer memory to optimize the use of R.
 }
+\examples{
+#Who_is("Data.frame") # List all data.frames in the global environment.
+
+}

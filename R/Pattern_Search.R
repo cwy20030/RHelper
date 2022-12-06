@@ -87,7 +87,7 @@ if(Direction=="Both"){
 
 
 
-if(is.null(dx_max_final)){
+if(length(dx_max_final)==0){
 
   Final_Pattern <- NULL
   warning("No clear pattern was found! Please, try another algorithm.")
