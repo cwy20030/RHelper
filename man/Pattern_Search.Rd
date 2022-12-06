@@ -21,3 +21,7 @@ Reutrn best matched patterns in R (i.e., Global Enviroment in R Studio)
 \description{
 This function will loop over strings and find the maximum patterns needed.
 }
+\examples{
+Strings <- names()
+
+}

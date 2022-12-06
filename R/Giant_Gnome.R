@@ -49,7 +49,7 @@ dg <-  lapply(1:(length(dx_max)-1),function(m){
     d <- which(dx_max[[m2-1]] == dx_max[[m2]])
     # Find the first and the last characters that are best matched
     n_max_match <- max(rle(diff(d))$length)
-    n_min_match <- sum(rle(diff(d))$length[!rle(diff(d))$length %in% n_max_match])+1
+    n_min_match <- sum(rle(diff(d))$length[!rle(diff(d))$length %in% n_max_match])
 
     paste0(dx_max[[m]][d[(n_min_match+1):(n_min_match+n_max_match)]],collapse = "")
   })
@@ -77,7 +77,7 @@ dg <-  lapply(1:(length(dx_min)-1),function(m){
     d <- which(dx_min[[m2-1]] == dx_min[[m2]])
     # Find the first and the last characters that are best matched
     n_max_match <- max(rle(diff(d))$length)
-    n_min_match <- sum(rle(diff(d))$length[!rle(diff(d))$length %in% n_max_match])+1
+    n_min_match <- sum(rle(diff(d))$length[!rle(diff(d))$length %in% n_max_match])
 
     paste0(dx_min[[m]][d[(n_min_match+1):(n_min_match+n_max_match)]],collapse = "")
   })

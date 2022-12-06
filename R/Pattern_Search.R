@@ -8,6 +8,8 @@
 #' @param Method A logical parameter for the search algorithm. There are two algorithms available in the current version: "PG", aka., Pattern_Genie, and "GG", aka Giant_n_Gnome. Pattern_Genie is best suited for multiple patterns that may be present at any given part of a string. Giant_n_Gnome is useful when the patterns desired are at the either end of the string.
 #' @return Reutrn best matched patterns in R (i.e., Global Enviroment in R Studio)
 #' @export
+#' @examples
+#' Strings <- names()
 #'
 
 
@@ -89,8 +91,7 @@ if(Direction=="Both"){
 
 if(length(dx_max_final)==0){
 
-  Final_Pattern <- NULL
-  warning("No clear pattern was found! Please, try another algorithm.")
+  print("No clear pattern was found! Please, try another algorithm.")
 
 } else {
 #########################     Second Iteration     ###############################
