@@ -13,6 +13,7 @@ Auto_Importer(
   Exclude = FALSE,
   inList = FALSE,
   Meta_List_Name = "df_list",
+  Progress = FALSE,
   ...
 )
 }
@@ -23,7 +24,7 @@ Auto_Importer(
 
 \item{Encoding}{If .csv files would be imported, one can specify}
 
-\item{Delim}{If the data is stored in .csv file and the Delim is not comma as default, please, specify it. <default: ",">}
+\item{Delim}{If the data is stored in .csv file and the Delim is not comma as default, please, specify it. Common deliminators include comma "," semicolon ";" colon ":" tab "/t" .  <default: ",">}
 
 \item{Keyword}{Specify keywords to import only specific files based on file names <Default: FALSE, i.e., import all>}
 
@@ -46,3 +47,5 @@ Auto_Importer(Directory_to_Downloads_Folder)
 
 
 }
+\keyword{Import,}
+\keyword{Read}

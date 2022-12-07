@@ -19,9 +19,9 @@ RoxygenNote: 7.2.2
 Collate:
     'Auto_Bulk_Merger.R'
     'Auto_Importer.R'
+    'CRA.R'
     'Clear_History.R'
     'Col_Name_Checker.R'
-    'CRA.R'
     'DF_Name_Checker.R'
     'Giant_Gnome.R'
     'Name_Checker.R'
@@ -29,5 +29,5 @@ Collate:
     'Pattern_Genie.R'
     'Pattern_Search.R'
     'Rank.Prtl.R'
-    'read_excel_allsheets.R'
     'Who_is.R'
+    'read_excel_allsheets.R'

@@ -7,12 +7,13 @@
 #' @param Directory Directory of where the files that you want to import <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
 #' @param File_Type The type of file to import. Currently, supports  ".txt .tsv  ".csv", ".xls(x)",".sas",".sav". <default: ".csv">
 #' @param Encoding If .csv files would be imported, one can specify
-#' @param Delim If the data is stored in .csv file and the Delim is not comma as default, please, specify it. <default: ",">
+#' @param Delim If the data is stored in .csv file and the Delim is not comma as default, please, specify it. Common deliminators include comma "," semicolon ";" colon ":" tab "/t" .  <default: ",">
 #' @param Keyword Specify keywords to import only specific files based on file names <Default: FALSE, i.e., import all>
 #' @param Exclude Specify keywords to exclude specific files from importation <Default: FALSE, i.e., exclude none>
 #' @param inList Binary operator identify if to import all files into a large list <Default: FALSE, i.e., import each separately into individual dataframe>
 #' @param Meta_List_Name The name assigned to the meta data list if inList is TRUE <Default: df_list>
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
+#' @keywords Import, Read
 #' @export
 #' @examples
 #' Download the folder from
@@ -21,7 +22,7 @@
 #'
 
 
-Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",...){
+Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",Progress=FALSE,...){
 
 
   if(File_Type==".xls" | File_Type==".xlsx") {

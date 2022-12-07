@@ -1,0 +1,53 @@
+# Preparing Sample Data
+
+
+set.seed(100000)
+
+Cap <- "NCSM_"
+
+nRandom <- sample(100:500,20)
+
+nYear <- sample(1985:2021,20,replace = TRUE)
+
+Base_Term <- "_Modified_K"
+
+
+df_list <- rep(list(list()),20)
+names(df_list) <- paste0(Cap,nRandom,"_",nYear,Base_Term)
+
+
+for(i in names(df_list)){
+  g <- abs(rnorm(1))
+  print(g)
+  df_list[[i]] <- data.frame("Age"=sample(18:85,100,replace = T),"Sex"=rbinom(n=100,size=1,prob=g))
+
+}
+
+
+################### Repeat Until all Sex values are set ###################
+
+for(i in names(df_list)){
+  g <- abs(rnorm(1))
+  if(NA %in% df_list[[i]]$Sex){
+    print(i)
+    df_list[[i]]$Sex <- rbinom(n=100,size=1,prob=g)
+  }
+
+}
+################### END ###################
+
+
+rbinom_Random <- function(x){
+  while(NA %in% x)  x <- rbinom(n=100,size=1,prob=abs(rnorm(1)))
+  x
+}
+
+
+for(i in names(df_list)){
+  df_list[[i]]$K10 <- sample(0:15,100,replace=T)
+  df_list[[i]]$Insomnia <- NA
+  df_list[[i]]$Insomnia <- rbinom_Random(df_list[[i]]$Insomnia)
+
+}
+
+
