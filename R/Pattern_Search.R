@@ -6,6 +6,7 @@
 #' @param Direction Patterns search from the begining of each string ("Forward"), from the end ("Backward") or "Both" ways. <<default: "Both">
 #' @param Match_All A logical parameter indicating whether to only report patterns matched in all elements in x. If FALSE, all possible patterns will be reported. <default: TRUE>
 #' @param Method A logical parameter for the search algorithm. There are two algorithms available in the current version: "PG", aka., Pattern_Genie, and "GG", aka Giant_n_Gnome. Pattern_Genie is best suited for multiple patterns that may be present at any given part of a string. Giant_n_Gnome is useful when the patterns desired are at the either end of the string.
+#' @param Threshold Cutoff for the percentage of pattern matched. <default: 0.33 i.e., 33%>
 #' @return Reutrn best matched patterns in R (i.e., Global Enviroment in R Studio)
 #' @export
 #' @examples
@@ -15,7 +16,7 @@
 
 
 
-Pattern_Search <-function(x,Direction="Both",Match_All=TRUE,Method="GG",...) {
+Pattern_Search <-function(x,Direction="Both",Match_All=TRUE,Method="GG",Threshold=0.33,...) {
 
   y <- x
 
@@ -27,7 +28,7 @@ if(Direction=="Backward"){
   }
 #########################   END    ###############################
 
-
+if(!Method %in% c("GG","PG")) stop("Please, double check the algorithm specified in Method.")
 
 ### decompose characters in strings ---------------------
   decomposed_x<-strsplit(y,"")
@@ -74,7 +75,7 @@ if(Direction=="Both"){
     dx_max_final2 <- Giant_Gnome(decomposed_x)
   }
 
-
+  dx_max_final2 <- unlist(lapply(lapply(strsplit(dx_max_final2,""),rev),paste0,collapse=""))
   #### Combine Them ---------------------------
 
   if(!is.null(dx_max_final2) & !is.null(dx_max_final)){
@@ -124,9 +125,10 @@ TRUE_Len <- sort(unlist(lapply(Retest,function(x){
   Final_Pattern$Partial <- names(TRUE_Len)[which(!TRUE_Len == length(x))]
 }
 
-}
 
-  # if there is no matching element, return an empty vector, else return the common part
 
 return(Final_Pattern)
+}
+
+
 }

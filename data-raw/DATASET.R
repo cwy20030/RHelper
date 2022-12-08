@@ -2,4 +2,5 @@
 
 # https://rstudio4edu.github.io/rstudio4edu-book/data-pkg.html
 
-usethis::use_data(DATASET, overwrite = TRUE)
+usethis::use_data(Sleep_Sim_data_list, overwrite = TRUE)
+

@@ -37,8 +37,9 @@ for(i in names(df_list)){
 ################### END ###################
 
 
-rbinom_Random <- function(x){
-  while(NA %in% x)  x <- rbinom(n=100,size=1,prob=abs(rnorm(1)))
+rbinom_Random <- function(x,preavlence_range,..){
+  p <- sample(preavlence_range,1)
+  while(NA %in% x)  x <- rbinom(n=100,size=1,prob=p)
   x
 }
 
@@ -46,8 +47,34 @@ rbinom_Random <- function(x){
 for(i in names(df_list)){
   df_list[[i]]$K10 <- sample(0:15,100,replace=T)
   df_list[[i]]$Insomnia <- NA
-  df_list[[i]]$Insomnia <- rbinom_Random(df_list[[i]]$Insomnia)
+  df_list[[i]]$Insomnia <- as.factor(rbinom_Random(df_list[[i]]$Insomnia,0.3:0.4))
+  df_list[[i]]$Apnea <- NA
+  df_list[[i]]$Apnea <- as.factor(rbinom_Random(df_list[[i]]$Apnea,0.15:0.3))
 
 }
 
+################### Repeat Until all Sex values are set ###################
+
+for(i in names(df_list)){
+for(x in c("Apnea","Insomnia")){
+g <- abs(rnorm(1))
+  if(NA %in% df_list[[i]][[x]]){
+    print(i)
+    df_list[[i]][[x]] <- as.factor(rbinom(n=100,size=1,prob=g))
+  }
+
+}
+}
+################### END ###################
+
+
+
+
+# Clean Environment
+rm("Base_Term","Cap","x","i","g","nRandom","nYear","rbinom_Random")
+
+
+Sleep_Sim_data_list <- df_list
+
+rm(df_list)
 

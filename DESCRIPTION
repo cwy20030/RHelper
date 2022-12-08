@@ -31,3 +31,5 @@ Collate:
     'Rank.Prtl.R'
     'Who_is.R'
     'read_excel_allsheets.R'
+Depends: 
+    R (>= 2.10)
