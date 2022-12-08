@@ -4,7 +4,14 @@
 \alias{Pattern_Search}
 \title{A Function to Automatically Search for the Maximum Patterns among Strings}
 \usage{
-Pattern_Search(x, Direction = "Both", Match_All = TRUE, Method = "GG", ...)
+Pattern_Search(
+  x,
+  Direction = "Both",
+  Match_All = TRUE,
+  Method = "GG",
+  Threshold = 0.33,
+  ...
+)
 }
 \arguments{
 \item{x}{A vector of strings}
@@ -14,6 +21,8 @@ Pattern_Search(x, Direction = "Both", Match_All = TRUE, Method = "GG", ...)
 \item{Match_All}{A logical parameter indicating whether to only report patterns matched in all elements in x. If FALSE, all possible patterns will be reported. <default: TRUE>}
 
 \item{Method}{A logical parameter for the search algorithm. There are two algorithms available in the current version: "PG", aka., Pattern_Genie, and "GG", aka Giant_n_Gnome. Pattern_Genie is best suited for multiple patterns that may be present at any given part of a string. Giant_n_Gnome is useful when the patterns desired are at the either end of the string.}
+
+\item{Threshold}{Cutoff for the percentage of pattern matched. <default: 0.33 i.e., 33%>}
 }
 \value{
 Reutrn best matched patterns in R (i.e., Global Enviroment in R Studio)

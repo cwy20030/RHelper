@@ -22,6 +22,7 @@ Collate:
     'CRA.R'
     'Clear_History.R'
     'Col_Name_Checker.R'
+    'data.R'
     'DF_Name_Checker.R'
     'Giant_Gnome.R'
     'Name_Checker.R'
@@ -31,3 +32,5 @@ Collate:
     'Rank.Prtl.R'
     'Who_is.R'
     'read_excel_allsheets.R'
+Depends: 
+    R (>= 2.10)
