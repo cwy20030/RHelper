@@ -7,7 +7,7 @@
 Auto_Importer(
   Directory,
   File_Type = ".csv",
-  Encoding = "UTF-8",
+  Encoding = "",
   Delim = ",",
   Keyword = FALSE,
   Exclude = FALSE,

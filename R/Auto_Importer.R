@@ -22,7 +22,7 @@
 #'
 
 
-Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",Progress=FALSE,...){
+Auto_Importer <- function(Directory,File_Type=".csv",Encoding="",Delim=",", Keyword= FALSE,Exclude= FALSE, inList=FALSE, Meta_List_Name="df_list",Progress=FALSE,...){
 
 
   if(File_Type==".xls" | File_Type==".xlsx") {
@@ -55,20 +55,14 @@ Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",",
         Exclusion <- grep(pattern = ln,files_original)
         files_original[Exclusion]
       })
-
-
-
       file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
 
-      file_names = gsub(x = files,pattern = File_Type ,replacement = "")
 
     } else {
       Exclusion <- grep(pattern = Keyword,files)
       files <- files[Exclusion]
-
       file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")[Exclusion]
 
-      file_names = gsub(x = files,pattern = File_Type ,replacement = "")
     }
 
 
@@ -78,9 +72,12 @@ Auto_Importer <- function(Directory,File_Type=".csv",Encoding="UTF-8",Delim=",",
 files = iconv(list.files(path = Directory,pattern = paste0("*",File_Type)), from="UTF-8", to="LATIN1")
 file_dir = iconv(list.files(path=Directory,pattern = paste0("*",File_Type),full.names = TRUE), from="UTF-8", to="LATIN1")
 
-file_names = gsub(x = files,pattern = File_Type ,replacement = "")
+
 
 }
+
+  file_names = gsub(x = files,pattern = File_Type ,replacement = "")
+
 
 if(!isFALSE(Exclude)){
 Exclude_names <- unlist(file_names)
@@ -106,11 +103,14 @@ Exclude_names <- Exclude_names[grep(Exclude,Exclude_names)]
 
 if(File_Type==".csv"| File_Type==".tsv" | File_Type==".txt"){
   for(i in 1:length(files)){
+    if(Progress) print(files[i])
+
+
     if(File_Type==".csv"|File_Type==".txt"){
       if(grepl( "UTF",Encoding, fixed = TRUE)){
-       files_df <- read.csv(file_dir[i],fileEncoding=Encoding,sep = Delim)
+        files_df <- read.csv(file_dir[i],sep = Delim,show_col_types = FALSE)
     } else {
-      files_df <- read.csv(file_dir[i],sep = Delim)
+      files_df <- read.csv(file_dir[i],encoding=Encoding,sep = Delim,show_col_types = FALSE)
     }
       }
 
@@ -127,6 +127,9 @@ if(File_Type==".csv"| File_Type==".tsv" | File_Type==".txt"){
 }  else if(File_Type==".xls" | File_Type==".xlsx") {
 
   for(i in 1:length(files)){
+
+    if(Progress) print(files[i])
+
     sheets <- excel_sheets(file_dir[i])
 
   if(length(sheets)>1) {
@@ -159,6 +162,8 @@ if(File_Type==".csv"| File_Type==".tsv" | File_Type==".txt"){
   } else if(File_Type==".sas") {
 
     for(i in 1:length(files)){
+      if(Progress) print(files[i])
+
       files_df <- read_sas(file_dir[i])
       files_df <- files_df
 
@@ -174,6 +179,8 @@ if(File_Type==".csv"| File_Type==".tsv" | File_Type==".txt"){
   }  else if(File_Type==".sav") {
 
     for(i in 1:length(files)){
+      if(Progress) print(files[i])
+
       files_df <- read_spss(file_dir[i])
       files_df <- files_df
 
