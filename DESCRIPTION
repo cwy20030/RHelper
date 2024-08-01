@@ -1,28 +1,16 @@
 Package: RHelper
 Version: 1.9.0
 Title: A R Package to Facilitate Coding in R
-Description: RHelper is a 'grocery store' library containing various functions, designed to simplify/document coding in R. For all users (including beginners), RHelper has simplified various data management procedures into one-line commands. These include mapping folder contents (Clerk), bulk data importation across various formats (Importer), and organizing the global environment (e.g., Who_is and Merger). For experienced users, RHelper features code logging (Historian) and systematic documentation for data preparation (Librarian). These functions can help users not only track their code execution but also improve reproducibility for future projects.
+Description: A 'grocery store' library containing various functions, designed to simplify/document coding in R. For all users (including beginners), RHelper has simplified various data management procedures into one-line commands. These include mapping folder contents (Clerk), bulk data importation across various formats (Importer), and organizing the global environment (e.g., Who_is and Merger). For experienced users, RHelper features code logging (Historian) and systematic documentation for data preparation (Librarian). These functions can help users not only track their code execution but also improve reproducibility for future projects.
 Authors@R: 
     person("C. William", "Yao", , "chun.william.yao.cnmtl@ssss.gouv.qc.ca", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7234-7375"))
 Author: C. William Yao [aut, cre] (<https://orcid.org/0000-0002-7234-7375>)
 Maintainer: C. William Yao <chun.william.yao.cnmtl@ssss.gouv.qc.ca>
-Date: 2021/07/19  Updated: 2024-08-01
+Date: 2024-08-01
 Depends: 
     R (>= 3.1.0)
-Imports: 
-    haven,
-    methods,
-    readr,
-    readxl,
-    reshape2,
-    stats,
-    stringdist,
-    stringi,
-    stringr,
-    tools,
-    utils,
-    writexl
+Imports: https://github.com/cwy20030/RHelper/issues
 License: GPL (>= 3)
 URL: https://github.com/cwy20030/RHelper
 BugReports: https://github.com/cwy20030/RHelper/issues

@@ -1,5 +1,5 @@
 
-#' Setting up Setting Files
+# Setting up Setting Files
 
 
 EnvSetUp = function(){

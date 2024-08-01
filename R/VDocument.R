@@ -1,7 +1,5 @@
-#' VDocument
-#'
-#' @param Data a data.frame
-#' @return A Fillout Dictionary Template
+#@param Data a data.frame
+#@return A Filled Dictionary Template
 
 VDocument = function(Data){
 

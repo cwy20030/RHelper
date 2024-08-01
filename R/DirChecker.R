@@ -1,11 +1,11 @@
 
-#' Check if the directory is a file or a folder
-#' @import utils
-#' @importFrom tools file_ext
-#' @param Dir Directory of where the files that you want to import (e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.
-#' @return Directory class
-#'
-#'
+# Check if the directory is a file or a folder
+# @import utils
+# @importFrom tools file_ext
+# @param Dir Directory of where the files that you want to import (e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.
+# @return Directory class
+#
+#
 DirChecker = function(Dir){
 
 

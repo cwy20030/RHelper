@@ -1,5 +1,5 @@
 
-#' Directory Correction and Setting
+# Directory Correction and Setting
 
 
 DirSetting = function(Dir = NULL){
