@@ -1,99 +1,192 @@
-#' Lexicographer is a function to help compose a project-oriented dictionary.
+#' Project-oriented Dictionary Composition: Lexicographer
 #'
 #' This function will automatically document all the variables embeded in the project.
 #' When calling Lexicographer for the first time, Lexicographer will create a dictionary template at where the
 #' When activate Lexicographer, the
 #'
-#' @import readr
-#' @param Directories Directory of where the files that you want to document <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
+#' @import readxl writexl readr utils stats
+#' @param Directory Directory of where the dictionary was stored (e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.  Note for first time user or new project setup, a new dictionary will be automatically generated if not found.
+#' @param Data a data.frame
+#' @param Commit A logical indicator to specify whether to save the update (default = TRUE)
+#' @param Version_Control A logical indicator to specify whether to create a version history of the Dictionary. (default = TRUE)
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
-#' @keywords Import, Read
+#' @keywords Dictionary, Lexicographer
 #' @export
-#' @examples
-#' Download the folder from
-#' Clerk(Directory_to_Downloads_Folder)
+#' @examplesIf interactive()
+#'
+#' # Load infert Dataset
+#' data(infert)
+#'
+#' ## Add NA
+#' for(i in names(infert)){
+#'   a = sample(15,1)
+#'   b = sample(nrow(infert),a)
+#'
+#'   infert[[i]][b] = NA
+#' }
+#'
+#' # Change the Working Directory to the Default Temporary Directory
+#' Current.Dir <- getwd(); setwd(tempdir())
+#'
+#'
+#' Lexicographer(Directory = tempdir(), Data = infert)
+#'
+#'
+#'
+#' # Reset Working Directory
+#' setwd(Current.Dir)
+#' rm(Current.Dir)
 #'
 #'
 
-
-Lexicographer <- function(Directory,Data=NULL,Missing_Identifier=FALSE,...){
-
-# Check if Dictionary exists in the directory
-  Temp = Clerk(Directory)
+Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control = T,...){
 
 
-# First Time ---------------------
-if(!"Dictionary" %in% Temp$File_Name){
+# Check Pre-requisit --------
+  for (x in c("readxl", "writexl", "readr", "utils", "stats"))
+    if (!requireNamespace(x, quietly = T)) {
+      install.packages(x)
+      requireNamespace(x, quietly = T)
+    }
 
-    Variable = data.frame(matrix(ncol=5))
-    Value =  data.frame(matrix(ncol=6))
+
+
+# Check if Directory Grammar ----------
+  if(is.null(Directory)) Trigger = TRUE
+  Directory = DirSetting(Dir = Directory)
+
+
+# Decision on the Dictionary -------------
+# Default Decision = 1
+
+  Decision = 1
+
+
+  if(Trigger & "Dictionary" %in% Who_is("List")){
+    message("A Dictionary has been found in the Global Environment.
+            Do you wish to use this existing Dictionary?")
+    warning("To create a new Dictionary, the existing one will be removed from the Global Environment!")
+    Options = c("Default: Import/Create a Dictionary","Use Existing Dictionary in the Global Environment")
+    Decision = QnA(Options,"action")
+  }
+
+
+# Check if Dictionary exists in the directory --------------
+
+  ClerkLog = Clerk(Directory)
+
+
+## Decision == 2  --------------
+### If to keep the existing Dictionary ---------------
+
+  if (Decision == 2){
+    Dictionary = get("Dictionary",envir = .GlobalEnv)
+
+    if (!"Dictionary" %in% ClerkLog$File_Name) writexl::write_xlsx(list(Variable = Dictionary$Variable, Value = Dictionary$Value), path = paste0(Directory,"/Dictionary.xlsx"))
+
+  }
+## Decision == 1  --------------
+### First Time ---------------------
+if (!"Dictionary" %in% ClerkLog$File_Name) {
+
+    Variable = data.frame(matrix(ncol = 5))
+    Value =  data.frame(matrix(ncol = 6))
     names(Variable)  = c("Variable", "Type",	"Unit",	"Definition", "Note")
     names(Value)  =   c("Variable",	"Type",	"Unit", "Value", "Definition", "Note")
 
+    Dictionary = list(Variable = Variable, Value = Value)
 
-  Dictionary = list(Variable,Value)
   message("No Dictionary was found in the directory. Dictionary now is created.
-           As a gentle reminder, Lexicographer can also be used to document newly
-          created variable.")
+
+<Note>
+Currently, there is no additional option to individualize the dictionary name.
+Therefore, please, do NOT manually modify the file name of the dictionary.
+This however, does not restrict manual edits on the content within the dictionary.
+In fact, we encourage users to go through the dictionary.
+
+As a gentle reminder, Lexicographer can also be used to document newly created variable.")
+
+  writexl::write_xlsx(list(Variable = Variable, Value = Value), path = paste0(Directory,"/Dictionary.xlsx"))
+
+  Path = paste0(Directory,"/Dictionary.xlsx") # Save Path
+
+ # if(nrow(df) > 1024^2){
+ #   stop("the xlsx format does not support tables with 1M+ rows")
+ #  }
+
+} else {
+
+### If there is a dictionary already, import it -------------
+
+  Path = ClerkLog$File_Path[ClerkLog$File_Name == "Dictionary"]
+
+  Importer(Path)
+  Dictionary = get("Dictionary",envir = .GlobalEnv)
+}
+
+
+
+# Documentation  ------------------
+  if (!is.null(Data)) {
+
+ #   df_name <- deparse(substitute(Data)) # Extract Data Name
+
+
+ ## Step 1: Check Existance of Variable Names within the Existing Dictionary -------
+   VNames = names(Data)
+
+   Exclude = VNames[VNames %in% Dictionary$Variable$Variable]
+
+   if (length(Exclude) > 0) {
+     warning(paste0("Following variables ", paste0(Exclude,collapse = ", ") ," had been documented in prior session. "))
+
+     SubData = Data[VNames[!VNames %in% Exclude]] # Subset Data for New Variable Documentation
+
+   } else {
+
+     SubData = Data
+   }
+
+
+
+  ## Step 2: Check Existance of Variable Names within the Existing Dictionary ----
+   if(nrow(SubData)>0) {
+   Update = VDocument(SubData)
+
+
+   ### Version Control ------
+   if(isTRUE(Commit)){
+      if(isTRUE(Version_Control)) {
+        VControl(Directory = Directory,
+                 dfName = "Dictionary",
+                 extension = ".xlsx",
+                 category = "Dictionary")
+      }
+   }
+
+
+   Dictionary$Variable = RowBind(Dictionary$Variable,Update$Variable)
+   Dictionary$Variable = Dictionary$Variable[complete.cases(Dictionary$Variable),]
+
+
+   Dictionary$Value = RowBind(Dictionary$Value,Update$Value)
+   Dictionary$Value = Dictionary$Value[complete.cases(Dictionary$Value),]
+
+
+
+
+  assign("Dictionary",Dictionary,envir = .GlobalEnv)
+
+
+
+  if(isTRUE(Commit))
+  writexl::write_xlsx(list(Variable = Dictionary$Variable, Value = Dictionary$Value), path = paste0(Directory,"/Dictionary.xlsx"))
+
+  }
+
+
 
 }
 
 
-if("Dictionary" %in% Temp$File_Name) {
-  Path = Temp$File_Path[Temp$File_Name == "Dictionary"]
-  Folder = Temp$Folder[Temp$File_Name == "Dictionary"]
-  gsub(paste0("(?=",Folder,").*"),Path)
-
-}
-  Auto_Importer()
-
-
-
-# Check Ordinal Variables -------------------
-  # Get differences between sorted unique values
-  diffs <- diff(sort(unique(your_data)))
-
-  # Check if all differences are equal
-  all(diffs == diffs[1])
-
-
-
-
-
-
- # df,dictionary_file,Assigned_df_Name,Missing_Identifier=FALSE,Keyword_for_Exclude=FALSE, Variables="All",factor_type=FALSE,numeric_type=FALSE,sorting_columns=FALSE,...
-
-  if(!Missing_Identifier==FALSE){
-    Missing_df <- dictionary_file$Categories[dictionary_file$Categories$missing=="1" & dictionary_file$Categories$variable %in% names(df),]
-  }  else if(Variables=="All" & Keyword_for_Exclude==FALSE){
-    Missing_df <- dictionary_file$Categories[dictionary_file$Categories$`label:en` %in% c("Missing due to contradictory responses","Missing","Not Applicable","[DO NOT READ] Refused","[DO NOT READ] Don't know/No answer","Refused","Don't know/No answer","Don't Know/No Answer","Don't Know / No Answer","Skipped","[DO NOT READ] Skip recording","Skip Pattern","Skip pattern","Did not complete a DCS visit","Not administered in accommodation strategy","Missing") & dictionary_file$Categories$variable %in% names(df),]
-  } else if(!Variables=="All" & !Keyword_for_Exclude==FALSE) {
-    Missing_df <- dictionary_file$Categories[dictionary_file$Categories$`label:en` %in% Keyword_for_Exclude & dictionary_file$Categories$variable %in% Variables,]
-  } else if(!Variables=="All" & Keyword_for_Exclude==FALSE) {
-    Missing_df <- dictionary_file$Categories[dictionary_file$Categories$`label:en` %in% c("Missing due to contradictory responses","Missing","Not Applicable","[DO NOT READ] Refused","[DO NOT READ] Don't know/No answer","Refused","Don't know/No answer","Don't Know/No Answer","Don't Know / No Answer","Skipped","[DO NOT READ] Skip recording","Skip Pattern","Skip pattern","Did not complete a DCS visit","Not administered in accommodation strategy","Missing") & dictionary_file$Categories$variable %in% Variables,]
-  } else if(Variables=="All" & !Keyword_for_Exclude==FALSE) {
-    Missing_df <- dictionary_file$Categories[dictionary_file$Categories$`label:en` %in% Keyword_for_Exclude & dictionary_file$Categories$variable %in% names(df),]
-    warning("All variables were cleaned because the `Variable` parameter was set to `All`!")
-  }
-
-  for(i in Missing_df$variable){
-    df[[i]][df[[i]] %in% Missing_df$name[Missing_df$variable==i]] <- NA
-  }
-
-  if(!factor_type==FALSE){
-    factor_list <- dictionary_file$Variables[dictionary_file$Variables %in% factor_type]
-    df[factor_list] <- lapply(df[factor_list],as.factor)
-  }
-
-  if(!numeric_type==FALSE){
-    numeric_list <- dictionary_file$Variables[dictionary_file$Variables %in% numeric_type]
-    df[numeric_list] <- lapply(df[numeric_list],as.numeric)
-  }
-
-  if(!sorting_columns==FALSE) df <- df[sort(names(df))]
-
-  Not_in_Ditionary <- names(df)[!names(df) %in% dictionary_file$Variables$name]
-  if(!is.null(Not_in_Ditionary)) print(paste0("The following variables were not found in your dictionary:",Not_in_Ditionary))
-
-  assign(Assigned_df_Name,value = df,.GlobalEnv)
 }

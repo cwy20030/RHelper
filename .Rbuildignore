@@ -1,4 +1,3 @@
-\.Rproj$
-\.Rproj\.user$
+^RHelper\.Rproj$
 ^\.Rproj\.user$
-^data-raw$
+^LICENSE\.md$

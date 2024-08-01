@@ -2,12 +2,24 @@
 % Please edit documentation in R/Lexicographer.R
 \name{Lexicographer}
 \alias{Lexicographer}
-\title{Lexicographer is a function to help compose a project-oriented dictionary.}
+\title{Project-oriented Dictionary Composition: Lexicographer}
 \usage{
-Lexicographer(Directory, Data = NULL, Missing_Identifier = FALSE, ...)
+Lexicographer(
+  Directory = NULL,
+  Data = NULL,
+  Commit = T,
+  Version_Control = T,
+  ...
+)
 }
 \arguments{
-\item{Directories}{Directory of where the files that you want to document <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">}
+\item{Directory}{Directory of where the dictionary was stored (e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.  Note for first time user or new project setup, a new dictionary will be automatically generated if not found.}
+
+\item{Data}{a data.frame}
+
+\item{Commit}{A logical indicator to specify whether to save the update (default = TRUE)}
+
+\item{Version_Control}{A logical indicator to specify whether to create a version history of the Dictionary. (default = TRUE)}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
@@ -18,10 +30,32 @@ When calling Lexicographer for the first time, Lexicographer will create a dicti
 When activate Lexicographer, the
 }
 \examples{
-Download the folder from
-Clerk(Directory_to_Downloads_Folder)
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
+# Load infert Dataset
+data(infert)
 
+## Add NA
+for(i in names(infert)){
+  a = sample(15,1)
+  b = sample(nrow(infert),a)
+
+  infert[[i]][b] = NA
 }
-\keyword{Import,}
-\keyword{Read}
+
+# Change the Working Directory to the Default Temporary Directory
+Current.Dir <- getwd(); setwd(tempdir())
+
+
+Lexicographer(Directory = tempdir(), Data = infert)
+
+
+
+# Reset Working Directory
+setwd(Current.Dir)
+rm(Current.Dir)
+
+\dontshow{\}) # examplesIf}
+}
+\keyword{Dictionary,}
+\keyword{Lexicographer}

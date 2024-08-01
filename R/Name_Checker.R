@@ -1,59 +1,70 @@
-#' An Automatic Pipeline to Check and Correct Dataframe Names
+#' A Function to Check for Potentially Problematic Variable Names and Correct Them
 #'
-#' This function will loop over all data frames in the work environment. If a dataframe starts with a digit or a punctuation, the pipeline will add a "x" in
-#' front of it so the user will not need to wrap `` around the name of a dataframe during computation.
-#' 
-#' @param Simple An operator determines whether to simply add a cap at the begining. If false, all texts before the first alphaba will be moved to the end. <default: TRUE>
-#' @return 'Corrected' Names for Dataframes starting with non-alphabatic characters
+#' This function will loop over all data frames in the work environment. If a dataframe starts with a digit or a
+#' punctuation, the pipeline will add a "x" in front of it so the user will not need to wrap `` around
+#' the name of a data.frame during computation.
+#'
+#' @importFrom stringi stri_trans_general
+#' @param Names The name of variables/columns within a dataframe.
+#' @param Silent A logical indicator for reporting summary.
+#' @return 'Corrected' variable names
 #' @export
-#' 
+#' @examplesIf interactive()
+#'
+#' # Create a dummy data.frame
+#' df = data.frame(x = rnorm(100))
+#'
+#' df$`Hours in Bed` = abs(rnorm(100)*10)
+#' df$`10 Hrs of Sleep ` = factor(ifelse(df$`Hours in Bed`>10,"Yes","No"))
+#' df$`Subject who Forget to Sign Agreement!` = factor(rbinom(n = 100,size = 1,prob = 0.1))
+#'
+#' Name_Checker(names(df))
+#'
+#'
+#' # The same principle can be applied to correct data.list documentation.
+#'
+#'
+#'
 
-DF_Name_Checker <- function(Simple=TRUE,...){
-  df_list <- Who_is(Type = "Data.frame")
-  df_list2 <- Who_is(Type = "List")
-  df_list <- cbind(df_list,df_list2)
-  
-  for(i in df_list){
+Name_Checker <- function(Names,Silent=TRUE,...){
+  if(!require("stringi",character.only = TRUE)) stop("Package stringi not found")
+
+
+  Names <- stri_trans_general(Names,id = "Latin-ASCII")
+
+  # Prepare Output Field
+  NewNames = Names
+
+  # Process
+  for(i in Names){
+    # Remove unwanted symbols
+    Punct <- unlist(gregexpr('[[:punct:]]', i))
+    if(!-1 %in% Punct) i <- gsub("[[:punct:]]", "\\s", i)
+
+
+    # Deal with Spacing
+    i = trimws(i) # Remove Space at the begining and at the end of the string
+
     Space <- grepl("\\s", i)
     if(isTRUE(Space)){
       i_n <- gsub("\\s","_",i)
     } else {
       i_n <- i
     }
-    
-    Number <- unlist(gregexpr('[[:digit:]]', i_n))
-    
-    Punct <- unlist(gregexpr('[[:punct:]]', i_n))
-    
-    
+
+
+    # Add a cap to the number beginning string
     Alphb <- unlist(gregexpr('[[:alpha:]]', i_n))
-    
-    if(!1 %in% Alphb){
-      if(!isTRUE(Simple)){
-        if(!Punct==-1){
-          
-          # Scenario 1 Moving everything before a punctuation to the end
-          if(Punct[[1]]+1 %in% Alphb & !1 %in% Punct[[1]]){
-            i_n <- paste0(substr(i_n,Punct[[1]]+1,nchar(i_n)),substr(i_n,Punct[[1]],Punct[[1]]),substr(i_n,1,Punct[[1]]-1))
-          } else {
-            # Move everything before the first character to the end
-            i_n <- paste0(substr(i_n,Alphb[[1]],nchar(i_n)),substr(i_n,1,Alphb[[1]]-1))
-          }
-        }
-        # Move everything before the first character to the end
-        i_n <- paste0(substr(i_n,Alphb[[1]],nchar(i_n)),substr(i_n,1,Alphb[[1]]-1))
-      }
-      # Simplified Version: Adding x at the begining.
-      i_n <- paste0("x",i_n)
-      
-    } else if(Alphb==-1){
-      i_n <- paste0("x",i_n)
-    }
-    
-    assign(i_n,value = get(i),.GlobalEnv)
-    
-    if(!1 %in% Alphb) rm(list = i,envir = .GlobalEnv)
+    if(!1 %in% Alphb) i_n <- paste0("x",i_n)
+
+
+    # Return Results
+
+    NewNames[NewNames %in% i] <- i_n
   }
- 
+
+ return(NewNames)
+
+  if(!Silent) message(table(Original_Name = Names, New_Name = NewNames))
 }
 

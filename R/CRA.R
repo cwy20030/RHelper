@@ -1,59 +1,96 @@
 #' A function that check and install missing dependencies for packages.
 #'
-#' The function - CRA, will check if the dependent packages required are installed in the system. It is particularliy helpful in the following scenarios.
+#' The function - CRA (inspired by the acronym of Canadian Revenue Agency), will check if the dependent packages required are installed in the system. It is particularly helpful in the following scenarios.
 #' 1. Installing a "developing" libraries from GitHub
 #' 2. Sourcing an in-house library from the author
 #' 3. Check dependencies and repair missing libraries after downgrading/upgrading R environment without performing automatic transfer for libraries.
 #'
-#' @import readxl haven readr
+#' @import utils stats
 #' @param Package The name of the package <e.g. "RHelper">
 #' @param Install_Suggests Specify if the suggested libraries will be installed <default: FALSE>
-#' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
+#' @param Silent A logical indicator for reporting summary.
 #' @export
-#' @examples
-#' CRA("ggplot2") ***It is very important to keep the double quotation marks!
+#' @examplesIf interactive()
+#'
+#  # if(!require("stats", character.only = TRUE)) install.packages("stats")
+#
+#' CRA("stats") # ***It is very important to keep the double quotation marks!
 #'
 #'
 #'
+#'
 
 
 
-CRA <- function(Package, Install_Suggests=FALSE,...){
+CRA <- function(Package, Install_Suggests=FALSE, Silent=FALSE,...){
+
+  # Check Pre-requisit --------
+  for(x in c("utils"))
+    if(!requireNamespace(x, quietly = T)){
+      install.packages(x)
+      requireNamespace(x, quietly = T)
+    }
 
 
+  # Get All Avaialble Packages on the Official R Depository
   All_Packs <- available.packages()[,"Package"]
+
+  # Get all installed packages in the system
   Installed <- installed.packages()
 
 
-  DP <- available.packages()[Package,"Depends"]
-  IM <- available.packages()[Package,"Imports"]
-  SG <- available.packages()[Package,"Suggests"]
+  # Prepare Initial Report
+  ## Merge items based on the specified actions for the non-essential packages.
+  Report = lapply(c("Depends","Imports","Suggests"), function(x){
+    temp <- available.packages()[Package,x]
+
+    temp  <- unlist(strsplit(paste0(temp),split = ","))
+    tempclean <- trimws(temp) # Remove White Space
+    tempclean  <- gsub("\n\\("," (",tempclean) # Remove other type of spacing
+
+    df = data.frame(Name = gsub(" .*\\(.*", "\\1",tempclean))
+
+    df$Type = ifelse(x == "Depends", "Depedent",
+                     ifelse(x == "Imports", "Required",
+                            ifelse(x == "Suggests", "Suggested","")))
+
+    df$Version = trimws(ifelse(grepl(" \\(",tempclean),gsub(".*\\((.*?)\\).*", "\\1",tempclean),""))
+
+    as.data.frame(df)
+  })
 
 
+  Report = do.call(rbind,Report)
 
-  if(isTRUE(Install_Suggests)){
-    All <- c(DP,IM,SG)
-  } else {
-    All <- c(DP,IM)
+  # Step 2: Find out what to install
+  ToInstall <- Report$Name[Report$Name %in% All_Packs & !Report$Name %in% Installed]
+
+  ## Report Existing Status
+  Report$Installed = ifelse(Report$Name %in% Installed, "Yes", "No")
+
+  ## Generate To-be-Installed list
+  ### Remove Suggested Package from the list if needed
+  if(isFALSE(Install_Suggests)) ToInstall = ToInstall[!ToInstall %in% Report$Name[Report$Version=="Suggested"]]
+
+  ### Generate New Installation Report
+  Report$Action = ifelse(Report$Name %in% ToInstall, "New Installation", "")
+
+  ## R Version Report
+  if("R" %in% Report$Name){
+    Report = rbind(Report[Report$Name=="R",], Report[!Report$Name=="R",] )
+
+    Report$Installed[Report$Name=="R"] = ""
   }
 
 
-
-  All <- unlist(strsplit(paste0(All),split = ","))
-  All.1 <- unlist(strsplit(paste0(All),split = " "))
-  All.2 <- unlist(strsplit(paste0(All.1),split = "[[:punct:]]"))
-  All.Final <- All.2[grepl("^[A-Za-z]",All.2)]
-
-  To.Install <- All.Final[All.Final %in% All_Packs & !All.Final %in% Installed]
-
-  if(length(To.Install)>0){
-    lapply(To.Install,install.packages)
+  # Step 3: Final Action and Installation
+  if(length(ToInstall)>0){
+    lapply(ToInstall,install.packages)
   } else {
     message("None to be installed.")
   }
 
-
-
+  if(isFALSE(Silent)) return(Report)
 
 }
 

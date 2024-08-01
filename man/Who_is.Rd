@@ -14,8 +14,6 @@ Who_is(
 \item{Type}{a type of elements in your environment. <Options: "Data.frame", "Functions", or "List">}
 
 \item{print_out}{to identify whether to print out the names of all elements within the environment. <default: FALSE, which will not be seen on your screen>.}
-
-\item{DA}{0 = do not combine results from MSTP; 1 = combine results from MSTP.}
 }
 \value{
 A savable report with AIC index

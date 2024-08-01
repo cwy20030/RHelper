@@ -4,25 +4,29 @@
 \alias{CRA}
 \title{A function that check and install missing dependencies for packages.}
 \usage{
-CRA(Package, Install_Suggests = FALSE, ...)
+CRA(Package, Install_Suggests = FALSE, Silent = FALSE, ...)
 }
 \arguments{
 \item{Package}{The name of the package <e.g. "RHelper">}
 
 \item{Install_Suggests}{Specify if the suggested libraries will be installed <default: FALSE>}
-}
-\value{
-Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
+
+\item{Silent}{A logical indicator for reporting summary.}
 }
 \description{
-The function - CRA, will check if the dependent packages required are installed in the system. It is particularliy helpful in the following scenarios.
-1. Installing a "developing" libraries from GitHub
-2. Sourcing an in-house library from the author
-3. Check dependencies and repair missing libraries after downgrading/upgrading R environment without performing automatic transfer for libraries.
+The function - CRA (inspired by the acronym of Canadian Revenue Agency), will check if the dependent packages required are installed in the system. It is particularly helpful in the following scenarios.
+\enumerate{
+\item Installing a "developing" libraries from GitHub
+\item Sourcing an in-house library from the author
+\item Check dependencies and repair missing libraries after downgrading/upgrading R environment without performing automatic transfer for libraries.
+}
 }
 \examples{
-CRA("ggplot2") ***It is very important to keep the double quotation marks!
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+
+CRA("stats") # ***It is very important to keep the double quotation marks!
 
 
 
+\dontshow{\}) # examplesIf}
 }

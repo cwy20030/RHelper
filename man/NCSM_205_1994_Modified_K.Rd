@@ -3,21 +3,32 @@
 \docType{data}
 \name{NCSM_205_1994_Modified_K}
 \alias{NCSM_205_1994_Modified_K}
-\title{Daily Forecast}
+\title{Subjective sleep report of 100 participants}
 \format{
 A simulated data with 100 rows and 5 variables:
 \describe{
-\item{\code{Age}}{Age at the recuitment}
-\item{\code{Sex}}{Participant's biological sex}
-\item{\code{K10}}{Psychological distress scale}
-\item{\code{Insomnia}}{Insomnia symptom status}
-\item{\code{Apnea}}{Apnea symptom status}
+\item{Age}{Age at the recuitment}
+\item{Sex}{Participant's biological sex}
+\item{K10}{Psychological distress scale}
+\item{Insomnia}{Insomnia symptom status}
+\item{Apnea}{Apnea symptom status}
 }
 }
 \usage{
 data(NCSM_205_1994_Modified_K)
 }
 \description{
-A simulated data for sleep study
+This dataset contains SIMULATED sleep reports of 100 participants interviewed in 1994.
+Each row contains the information of an "interviewee" about their psychological distress
+level in the past month and experiences of insomnia and apnea. Besides the purpose of
+helping users familiarize with the RHelper package. The simulated dataset can also be used
+as a practical tool for practicing/training research analysis in R.
+}
+\details{
+"Research" Questions:
+\enumerate{
+\item Is there an association between apnea symptom and participants' psychological distress level?
+\item Is biological sex a modifier for the association between age and insomnia?
+}
 }
 \keyword{datasets}

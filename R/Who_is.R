@@ -5,7 +5,6 @@
 #'
 #' @param Type a type of elements in your environment. <Options: "Data.frame", "Functions", or "List">
 #' @param print_out to identify whether to print out the names of all elements within the environment. <default: FALSE, which will not be seen on your screen>.
-#' @param DA 0 = do not combine results from MSTP; 1 = combine results from MSTP.
 #' @return A savable report with AIC index
 #' @export
 #' @examples

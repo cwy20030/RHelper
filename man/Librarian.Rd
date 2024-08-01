@@ -5,32 +5,29 @@
 \title{A function to help prepare a dataset for analysis}
 \usage{
 Librarian(
-  df,
-  dictionary_file,
-  Assigned_df_Name,
-  Missing_Identifier = FALSE,
-  Keyword_for_Exclude = FALSE,
-  Variables = "All",
-  factor_type = FALSE,
-  numeric_type = FALSE,
-  sorting_columns = FALSE,
+  Data,
+  Dictionary = NULL,
+  Missing_Identifier = NA,
+  KeyExclude = NULL,
+  NewName = NULL,
   ...
 )
 }
 \arguments{
-\item{Directories}{Directory of where the files that you want to document <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">}
+\item{Data}{a data.frame}
+
+\item{Missing_Identifier}{Values identified as missing}
+
+\item{KeyExclude}{Values to be excluded}
+
+\item{NewName}{Name name for the modified data.}
+
+\item{Directory}{Directory for the project}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
-Based on the dictionary prepared by Lexicographer, Librarian is would automatically prepare the variables within a dataset ready for analysis.
+Based on the dictionary prepared by Lexicographer, Librarian will prepare the variables within a dataset ready for analysis.
 }
-\examples{
-Download the folder from
-Clerk(Directory_to_Downloads_Folder)
-
-
-}
-\keyword{Import,}
-\keyword{Read}
+\keyword{librarian}
