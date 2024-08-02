@@ -4,7 +4,7 @@
 \alias{CRA}
 \title{A function that check and install missing dependencies for packages.}
 \usage{
-CRA(Package, Install_Suggests = FALSE, Silent = FALSE, ...)
+CRA(Package, Install_Suggests = FALSE, Silent = FALSE)
 }
 \arguments{
 \item{Package}{The name of the package <e.g. "RHelper">}

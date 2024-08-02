@@ -26,7 +26,7 @@
 #'
 #'
 
-Name_Checker <- function(Names, Silent = TRUE, ... ){
+Name_Checker <- function(Names, Silent = TRUE ){
   if (!require("stringi",character.only = TRUE)) stop("Package stringi not found")
 
 

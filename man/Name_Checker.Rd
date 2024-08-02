@@ -4,7 +4,7 @@
 \alias{Name_Checker}
 \title{A Function to Check for Potentially Problematic Variable Names and Correct Them}
 \usage{
-Name_Checker(Names, Silent = TRUE, ...)
+Name_Checker(Names, Silent = TRUE)
 }
 \arguments{
 \item{Names}{The name of variables/columns within a dataframe.}

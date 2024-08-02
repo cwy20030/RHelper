@@ -4,7 +4,7 @@
 \alias{Clerk}
 \title{A function to automatically document files' properties contained in the directery/path specified.}
 \usage{
-Clerk(Dirs, ...)
+Clerk(Dirs)
 }
 \arguments{
 \item{Dirs}{Directory of where the files that you want to document <e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/">}

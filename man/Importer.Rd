@@ -13,8 +13,7 @@ Importer(
   Exclude = NULL,
   inList = FALSE,
   Meta_List_Name = "df_list",
-  Progress = FALSE,
-  ...
+  Progress = FALSE
 )
 }
 \arguments{

@@ -4,11 +4,7 @@
 \alias{Who_is}
 \title{A quick function to print the names of all elements within a specific type in the environment.}
 \usage{
-Who_is(
-  Type = c("Data.frame", "Function", "List", "Value"),
-  print_out = FALSE,
-  ...
-)
+Who_is(Type = c("Data.frame", "Function", "List", "Value"), print_out = FALSE)
 }
 \arguments{
 \item{Type}{a type of elements in your environment. <Options: "Data.frame", "Functions", or "List">}

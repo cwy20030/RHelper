@@ -9,8 +9,7 @@ Librarian(
   Dictionary = NULL,
   Missing_Identifier = NA,
   KeyExclude = NULL,
-  NewName = NULL,
-  ...
+  NewName = NULL
 )
 }
 \arguments{

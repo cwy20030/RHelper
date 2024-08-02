@@ -4,7 +4,7 @@
 \alias{RowBind}
 \title{A Function to bind data.frame by row}
 \usage{
-RowBind(DFx, DFy, Keep = "SAME", ...)
+RowBind(DFx, DFy, Keep = "SAME")
 }
 \arguments{
 \item{DFx}{First data.frame}

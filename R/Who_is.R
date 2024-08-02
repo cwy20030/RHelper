@@ -12,7 +12,7 @@
 #'
 
 
-Who_is <- function(Type = c("Data.frame","Function","List","Value"), print_out = FALSE, ... ){
+Who_is <- function(Type = c("Data.frame","Function","List","Value"), print_out = FALSE ){
   if (Type == "Data.frame") {
   Out <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.data.frame(get(x)))]
 } else if (Type == "Function") {

@@ -32,7 +32,7 @@
 #'
 
 
-RowBind = function(DFx, DFy, Keep = "SAME", ... ) {
+RowBind = function(DFx, DFy, Keep = "SAME" ) {
 
   # Prepare Process -----
 

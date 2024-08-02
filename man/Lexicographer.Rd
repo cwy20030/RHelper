@@ -4,13 +4,7 @@
 \alias{Lexicographer}
 \title{Project-oriented Dictionary Composition: Lexicographer}
 \usage{
-Lexicographer(
-  Directory = NULL,
-  Data = NULL,
-  Commit = T,
-  Version_Control = T,
-  ...
-)
+Lexicographer(Directory = NULL, Data = NULL, Commit = T, Version_Control = T)
 }
 \arguments{
 \item{Directory}{Directory of where the dictionary was stored (e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.  Note for first time user or new project setup, a new dictionary will be automatically generated if not found.}

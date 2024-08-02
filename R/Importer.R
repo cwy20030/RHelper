@@ -55,7 +55,7 @@
 #'
 
 
-Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = ",", Keyword =  NULL, Exclude = NULL, inList = FALSE, Meta_List_Name = "df_list", Progress = FALSE, ...) {
+Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = ",", Keyword =  NULL, Exclude = NULL, inList = FALSE, Meta_List_Name = "df_list", Progress = FALSE) {
 
 
   # Check Pre-requisit --------

@@ -4,7 +4,7 @@
 \alias{Butler}
 \title{A function to help keeping the global environment organized}
 \usage{
-Butler(Task, Keep = NULL, ...)
+Butler(Task, Keep = NULL)
 }
 \arguments{
 \item{Task}{A logical operator to assign one of the pre-specified tasks to the butler (this function). The tasks include

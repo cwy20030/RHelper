@@ -42,7 +42,7 @@
 
 
 
-Merger <- function(df_list, Reference_df = NULL, ReferenceID, Assigned_Name, sorting_row = TRUE, based = "Update", ... ){
+Merger <- function(df_list, Reference_df = NULL, ReferenceID, Assigned_Name, sorting_row = TRUE, based = "Update" ){
 
 
 

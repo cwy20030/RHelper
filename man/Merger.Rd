@@ -10,8 +10,7 @@ Merger(
   ReferenceID,
   Assigned_Name,
   sorting_row = TRUE,
-  based = "Update",
-  ...
+  based = "Update"
 )
 }
 \arguments{
