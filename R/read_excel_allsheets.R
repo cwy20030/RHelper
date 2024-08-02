@@ -1,8 +1,8 @@
 read_excel_allsheets <- function(filename, tibble = FALSE) {
 
   # Check Pre-requisit --------
-  for(x in c("readxl"))
-    if(!requireNamespace(x, quietly = T)){
+  for (x in c("readxl"))
+    if (!requireNamespace(x, quietly = T)) {
       install.packages(x)
       requireNamespace(x, quietly = T)
     }
@@ -13,7 +13,7 @@ read_excel_allsheets <- function(filename, tibble = FALSE) {
   # then just pass tibble = TRUE
   sheets <- excel_sheets(filename)
   x <- lapply(sheets, function(X) readxl::read_excel(filename, sheet = X))
-  if(!tibble) x <- lapply(x, as.data.frame)
+  if (!tibble) x <- lapply(x, as.data.frame)
   names(x) <- sheets
   x
 }

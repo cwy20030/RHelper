@@ -14,7 +14,7 @@
 #'
 
 
-Librarian <- function(Data, Dictionary = NULL, Missing_Identifier = NA, KeyExclude = NULL, NewName = NULL,...){
+Librarian <- function(Data, Dictionary = NULL, Missing_Identifier = NA, KeyExclude = NULL, NewName = NULL, ... ){
 
   if (is.null(Dictionary)) {
     Lexicographer(Data = Data)

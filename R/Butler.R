@@ -44,13 +44,13 @@
 
 
 
-Butler = function(Task,Keep=NULL,...){
+Butler = function(Task,Keep=NULL, ... ){
 
 
 
   # Check Pre-requisit --------
-  for(x in c("methods", "utils"))
-    if(!requireNamespace(x, quietly = T)){
+  for (x in c("methods", "utils"))
+    if (!requireNamespace(x, quietly = T)) {
       install.packages(x)
       requireNamespace(x, quietly = T)
     }
@@ -58,12 +58,12 @@ Butler = function(Task,Keep=NULL,...){
   CANTFind = NULL   # Place Holder
 
   # Clear ------------
-  if(toupper(Task) == "CLEAR") cat("\014")
+  if (toupper(Task) == "CLEAR") cat("\014")
 
 
   # Booking ------------
-  if(toupper(Task) == "BOOK"){
-    if(is.null(Keep)){
+  if (toupper(Task) == "BOOK") {
+    if (is.null(Keep)) {
       assign("BBook",value = ls(envir = .GlobalEnv),envir = .GlobalEnv)
     } else {
       ## Add Additional Items to Document -----------
@@ -75,10 +75,10 @@ Butler = function(Task,Keep=NULL,...){
 
 
   # Cleaning ---------
-  if(toupper(Task) == "CLEAN"){
+  if (toupper(Task) == "CLEAN") {
 
     ## First check the existance of Butler's Book (a.k.a., BBook) --------
-    if(!"BBook" %in% ls(envir = .GlobalEnv)) stop("The newly hired Butler has never documented any items in the Global Environment.
+    if (!"BBook" %in% ls(envir = .GlobalEnv)) stop("The newly hired Butler has never documented any items in the Global Environment.
                                   Please, ask the Buatler to Book items specified in Keep before cleaning.")
 
 
@@ -92,7 +92,7 @@ Butler = function(Task,Keep=NULL,...){
     BBook = BBook[BBook %in% AllItems]
     ## Next, Handling Keep Parameters ------
 
-    if(!is.null(Keep)){
+    if (!is.null(Keep)) {
 
       ### Add Keep Items' Names ----------
       ToAdd = Keep[Keep %in% AllItems]
@@ -100,7 +100,7 @@ Butler = function(Task,Keep=NULL,...){
 
 
       ### Check for class items ------
-      if(any(isClass(Keep))){
+      if (any(isClass(Keep))) {
         CLASS = names(which(sapply(Keep,isClass)))
 
         ItemClass = sapply(AllItems,function(x){
@@ -124,13 +124,13 @@ Butler = function(Task,Keep=NULL,...){
 
     ## Commence Cleaning
     assign("BBook",value = BBook,envir = .GlobalEnv)
-    rm(list=AllItems[!AllItems %in% BBook],envir = .GlobalEnv)
+    rm(list = AllItems[!AllItems %in% BBook],envir = .GlobalEnv)
 
     gc()
   }
 
 
-  if(length(CANTFind)>0)
+  if (length(CANTFind) > 0)
     warning(paste0("Some items were not documented because the Butler cannot find them. Please, check the spelling for ",paste0(CANTFind,collapse = ", "),"."))
 
 

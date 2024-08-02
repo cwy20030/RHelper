@@ -21,8 +21,8 @@ Historian <- function(Directory) {
 
 
   # Check Pre-requisit --------
-  for(x in c("readr", "utils"))
-    if(!requireNamespace(x, quietly = T)){
+  for (x in c("readr", "utils"))
+    if (!requireNamespace(x, quietly = T)) {
       install.packages(x)
       requireNamespace(x, quietly = T)
     }
@@ -34,19 +34,19 @@ Historian <- function(Directory) {
   # Generate a Path ----------
   Directory <- paste0(Directory,"/History")
 
-  if(dir.exists(Directory)==FALSE) dir.create(Directory)
+  if (isFALSE(dir.exists(Directory) )) dir.create(Directory)
 
 
   # Generate a File ----------
   File_Name <- paste0(Sys.Date(),".txt")
 
-  if(File_Name %in% list.files(Directory)){
+  if (File_Name %in% list.files(Directory)) {
     History <- read.delim(paste0(Directory,"/",File_Name),header = FALSE)
     History[[1]] <- as.character(History[[1]])
-    History[nrow(History)+2,] <- as.character(timestamp())
+    History[nrow(History) + 2,] <- as.character(timestamp())
 
 
-    savehistory(file=paste0(Directory,"/","2_",File_Name))
+    savehistory(file = paste0(Directory,"/","2_",File_Name))
     History2 <- read.delim(paste0(Directory,"/","2_",File_Name),header = FALSE)
     History2[[1]] <- as.character(History2[[1]])
     History <- rbind(History, History2)
@@ -55,10 +55,10 @@ Historian <- function(Directory) {
     file.remove(paste0(Directory,"/","2_",File_Name))
 
   } else {
-    savehistory(file=paste0(Directory,"/",File_Name))
+    savehistory(file = paste0(Directory,"/",File_Name))
   }
 
-  write("", file=".blank")
+  write("", file = ".blank")
   loadhistory(".blank")
   unlink(".blank")
 }

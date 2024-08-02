@@ -45,13 +45,13 @@ SandBox <- function(Expr, Show = TRUE, Commit = FALSE) {
   result <- eval(Expr, envir = eSandBox)
 
   # Return the result
-  if(Show) {
+  if (Show) {
     return(result)
   }
 
 
   # If Commit is TRUE, assign all variables in eSandBox to the global environment
-  if(Commit) {
+  if (Commit) {
     list2env(as.list(eSandBox), envir = .GlobalEnv)
   }
 }

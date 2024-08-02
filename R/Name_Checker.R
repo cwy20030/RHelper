@@ -26,8 +26,8 @@
 #'
 #'
 
-Name_Checker <- function(Names,Silent=TRUE,...){
-  if(!require("stringi",character.only = TRUE)) stop("Package stringi not found")
+Name_Checker <- function(Names, Silent = TRUE, ... ){
+  if (!require("stringi",character.only = TRUE)) stop("Package stringi not found")
 
 
   Names <- stri_trans_general(Names,id = "Latin-ASCII")
@@ -36,17 +36,17 @@ Name_Checker <- function(Names,Silent=TRUE,...){
   NewNames = Names
 
   # Process
-  for(i in Names){
+  for (i in Names) {
     # Remove unwanted symbols
     Punct <- unlist(gregexpr('[[:punct:]]', i))
-    if(!-1 %in% Punct) i <- gsub("[[:punct:]]", "\\s", i)
+    if (!-1 %in% Punct) i <- gsub("[[:punct:]]", "\\s", i)
 
 
     # Deal with Spacing
     i = trimws(i) # Remove Space at the begining and at the end of the string
 
     Space <- grepl("\\s", i)
-    if(isTRUE(Space)){
+    if (isTRUE(Space)) {
       i_n <- gsub("\\s","_",i)
     } else {
       i_n <- i
@@ -55,7 +55,7 @@ Name_Checker <- function(Names,Silent=TRUE,...){
 
     # Add a cap to the number beginning string
     Alphb <- unlist(gregexpr('[[:alpha:]]', i_n))
-    if(!1 %in% Alphb) i_n <- paste0("x",i_n)
+    if (!1 %in% Alphb) i_n <- paste0("x",i_n)
 
 
     # Return Results
@@ -65,6 +65,6 @@ Name_Checker <- function(Names,Silent=TRUE,...){
 
  return(NewNames)
 
-  if(!Silent) message(table(Original_Name = Names, New_Name = NewNames))
+  if (!Silent) message(table(Original_Name = Names, New_Name = NewNames))
 }
 

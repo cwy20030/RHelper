@@ -54,7 +54,7 @@ Do you agree to proceed (reply with 1 or 2) ?")
 
   # Check if the last character is a slash
   Closing = substr(Dir, nchar(Dir), nchar(Dir)) == "/"
-  if(!Closing) Dir = paste0(Dir,"/")
+  if (!Closing) Dir = paste0(Dir,"/")
 
   ## Export Direcotry ----------
   return(Dir)

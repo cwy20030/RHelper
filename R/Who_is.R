@@ -12,22 +12,22 @@
 #'
 
 
-Who_is <- function(Type=c("Data.frame","Function","List","Value"),print_out=FALSE,...){
-  if(Type=="Data.frame"){
-  Out <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.data.frame(get(x)))]
-} else if(Type=="Function"){
-  Out <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.function(get(x)))]
-} else if(Type=="List"){
-  exc <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.data.frame(get(x)))]
-  Out <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.list(get(x)))]
+Who_is <- function(Type = c("Data.frame","Function","List","Value"), print_out = FALSE, ... ){
+  if (Type == "Data.frame") {
+  Out <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.data.frame(get(x)))]
+} else if (Type == "Function") {
+  Out <- ls(envir  = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.function(get(x)))]
+} else if (Type == "List") {
+  exc <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.data.frame(get(x)))]
+  Out <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.list(get(x)))]
   Out <- Out[!Out %in% exc]
 } else {
-  Out1 <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.character(get(x)))]
-  Out2 <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.factor(get(x)))]
-  Out3 <- ls(envir=.GlobalEnv)[sapply(ls(envir=.GlobalEnv), function(x) is.numeric(get(x)))]
+  Out1 <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.character(get(x)))]
+  Out2 <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.factor(get(x)))]
+  Out3 <- ls(envir = .GlobalEnv)[sapply(ls(envir = .GlobalEnv), function(x) is.numeric(get(x)))]
   Out <- c(Out1,Out2,Out3)
 }
-if(print_out==TRUE){
+if (print_out == TRUE) {
   print(Out)
 } else {
   Out

@@ -39,7 +39,7 @@
 #'
 #'
 
-Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control = T,...){
+Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control = T, ... ){
 
 
 # Check Pre-requisit --------
@@ -52,7 +52,7 @@ Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control
 
 
 # Check if Directory Grammar ----------
-  if(is.null(Directory)) Trigger = TRUE
+  if (is.null(Directory)) Trigger = TRUE
   Directory = DirSetting(Dir = Directory)
 
 
@@ -62,7 +62,7 @@ Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control
   Decision = 1
 
 
-  if(Trigger & "Dictionary" %in% Who_is("List")){
+  if (Trigger & "Dictionary" %in% Who_is("List")) {
     message("A Dictionary has been found in the Global Environment.
             Do you wish to use this existing Dictionary?")
     warning("To create a new Dictionary, the existing one will be removed from the Global Environment!")
@@ -79,7 +79,7 @@ Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control
 ## Decision == 2  --------------
 ### If to keep the existing Dictionary ---------------
 
-  if (Decision == 2){
+  if (Decision == 2) {
     Dictionary = get("Dictionary",envir = .GlobalEnv)
 
     if (!"Dictionary" %in% ClerkLog$File_Name) writexl::write_xlsx(list(Variable = Dictionary$Variable, Value = Dictionary$Value), path = paste0(Directory,"/Dictionary.xlsx"))
@@ -150,13 +150,13 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
 
 
   ## Step 2: Check Existance of Variable Names within the Existing Dictionary ----
-   if(nrow(SubData)>0) {
+   if (nrow(SubData) > 0) {
    Update = VDocument(SubData)
 
 
    ### Version Control ------
-   if(isTRUE(Commit)){
-      if(isTRUE(Version_Control)) {
+   if (isTRUE(Commit)) {
+      if (isTRUE(Version_Control)) {
         VControl(Directory = Directory,
                  dfName = "Dictionary",
                  extension = ".xlsx",
@@ -179,7 +179,7 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
 
 
 
-  if(isTRUE(Commit))
+  if (isTRUE(Commit))
   writexl::write_xlsx(list(Variable = Dictionary$Variable, Value = Dictionary$Value), path = paste0(Directory,"/Dictionary.xlsx"))
 
   }

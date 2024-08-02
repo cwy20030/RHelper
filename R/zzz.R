@@ -1,7 +1,7 @@
 
 .onAttach <- function(libname, pkgname) {
 
-
+  packageStartupMessage(
 
     cat("
       _ _ _    ____   ____
@@ -16,7 +16,7 @@
                                 Version 1.9
 "
 
-  )
+  ) )
 }
 
 

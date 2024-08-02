@@ -8,9 +8,9 @@ Merger(
   df_list,
   Reference_df = NULL,
   ReferenceID,
+  Assigned_Name,
   sorting_row = TRUE,
   based = "Update",
-  Assigned_Name,
   ...
 )
 }
@@ -21,11 +21,11 @@ Merger(
 
 \item{ReferenceID}{The name of the variable in the data.frame that the user wishes to use to merge all data.frame. Please, make sure that all data.frame specified in the data.list contains the same name as specified in the ReferenceID.}
 
+\item{Assigned_Name}{The name for the new merge data.frame}
+
 \item{sorting_row}{Reordering the data.frame based on the sequence of ID in the ReferenceID  <Default: TRUE, i.e., Sorting data.frame by the ReferenceID>}
 
 \item{based}{A logical indicator determining whether to keep the duplicated columns (i.e., columns with the same names). If "Update" is passed, the columns with the shared name will be retrieved from the "df_list". Note that only the shared column from the last listed data.list will be kept when updating. When "Ref" (as Reference) is passed, only the column from the Reference_df will be kept. If "KA" (which stands for keeping all), is passed, both duplicated columns will be kept. In the latter scenario, the column with .x is the original column from the df_list and .y for the Reference_df.}
-
-\item{Assigned_Name}{The name for the new merge data.frame}
 }
 \value{
 export a merged data.frame to your working environment in R (i.e., Global Enviroment in R Studio)

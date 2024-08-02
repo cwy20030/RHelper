@@ -3,7 +3,7 @@ VControl = function(Directory,dfName,extension,category){
   Directory = DirSetting(Directory)
 
   VersionDir = paste0(Directory,"Version History/",category,"/")
-  if(!dir.exists(VersionDir))
+  if (!dir.exists(VersionDir))
     dir.create(VersionDir)
 
   Date = Name_Checker(Sys.Date(),Silent = T)

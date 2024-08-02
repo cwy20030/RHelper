@@ -2,7 +2,7 @@ QnA <- function(options, MESSAGE,Others=FALSE) {
 
 
   # Add Not Sure or Others
-  if(Others) options = c(options,"Other")
+  if (Others) options = c(options,"Other")
 
 
   # Print the options for the user
@@ -20,7 +20,7 @@ Or, Escape <Esc> to abort."))
     return(QnA(options,MESSAGE))
   }
 
-  if(grepl("Other",options[as.numeric(selected_option)])) options[as.numeric(selected_option)] <- readline(prompt=paste0("Please provide the ",MESSAGE,": "))
+  if (grepl("Other",options[as.numeric(selected_option)])) options[as.numeric(selected_option)] <- readline(prompt = paste0("Please provide the ",MESSAGE,": "))
 
 
 

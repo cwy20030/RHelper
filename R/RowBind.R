@@ -32,7 +32,7 @@
 #'
 
 
-RowBind = function(DFx,DFy,Keep="SAME",...){
+RowBind = function(DFx, DFy, Keep = "SAME", ... ) {
 
   # Prepare Process -----
 
@@ -47,14 +47,14 @@ RowBind = function(DFx,DFy,Keep="SAME",...){
 
 
   ### Prepare overlapped columns -----------
-  if(!toupper(Keep) == "EITHER")  DFSame = rbind(DFx[Common_Name],DFy[Common_Name])
+  if (!toupper(Keep) == "EITHER")  DFSame = rbind(DFx[Common_Name],DFy[Common_Name])
 
-  if(length(Common_Name)==0) warning("No common columns detected.")
+  if (length(Common_Name) == 0) warning("No common columns detected.")
 
 
 
   ### Prepare non-overlapped columns ------------
-  if(toupper(Keep) %in% c("EITHER","X","Y","ALL")){
+  if (toupper(Keep) %in% c("EITHER","X","Y","ALL")) {
     DFy[Only_x] = NA
     DFx[Only_y] = NA
   }
@@ -62,25 +62,25 @@ RowBind = function(DFx,DFy,Keep="SAME",...){
 
   # Prepare Output ------
   ## SAME -------
-  if(toupper(Keep) == "SAME"){
+  if (toupper(Keep) == "SAME") {
     DFOut = DFSame
 
   ## Either ----------
-  } else if(toupper(Keep) == "EITHER"){
+  } else if (toupper(Keep) == "EITHER") {
     DFOut = rbind(DFx[Either_xy],DFy[Either_xy])
 
   ## Only x ----------
-  } else if(toupper(Keep) == "X"){
+  } else if (toupper(Keep) == "X") {
     DFeither = rbind(DFx[Only_x],DFy[Only_x])
     DFOut = cbind(DFSame,DFeither)
 
   ## Only y ----------
-  } else if(toupper(Keep) == "Y"){
+  } else if (toupper(Keep) == "Y") {
     DFeither = rbind(DFx[Only_y],DFy[Only_y])
     DFOut = cbind(DFSame,DFeither)
 
   ## All Variables --------
-  } else if(toupper(Keep) == "ALL"){
+  } else if (toupper(Keep) == "ALL") {
     DFeither = rbind(DFx[Either_xy],DFy[Either_xy])
     DFOut = cbind(DFSame,DFeither)
   }

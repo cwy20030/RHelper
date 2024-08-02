@@ -13,7 +13,7 @@
 #'
 
 
-Clerk <- function(Dirs,...) {
+Clerk <- function(Dirs, ... ) {
 
 
 

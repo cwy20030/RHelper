@@ -16,6 +16,6 @@
 #'
 
 
-Naming_Variables <- function(x,Delim=","){
-  return(cat(paste0(shQuote(x),collapse=Delim)))
+Naming_Variables <- function(x, Delim = ","){
+  return(cat(paste0(shQuote(x),collapse = Delim)))
 }
