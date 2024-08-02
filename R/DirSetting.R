@@ -48,6 +48,8 @@ Do you agree to proceed (reply with 1 or 2) ?")
     }
   }
 
+  # Check directory existance status -------------
+  if (!dir.exists(Dir)) stop(paste0(Dir," cannot be found. Please, check the spelling.") )
 
   # Correct Directory Grammar ----------------
   Dir = gsub("\\\\","/",Dir)

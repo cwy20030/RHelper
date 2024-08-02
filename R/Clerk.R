@@ -25,6 +25,8 @@ Clerk <- function(Dirs, ... ) {
 
   if (length(Dirs) > 1) Dirs = unique(Dirs)
 
+  Dirs = unname(sapply(Dirs, DirClass))
+
   FolderCheck = file.info(Dirs)
 
   if (!any(FolderCheck$isdir))  Dirs[!FolderCheck$isdir] <- gsub("/[^/]*$", "", Dirs[!FolderCheck$isdir])
@@ -61,6 +63,7 @@ Clerk <- function(Dirs, ... ) {
   Out = do.call(rbind,Out)
 
 
+  return(Out)
   ############################################
   ###                 End                  ###
   ############################################

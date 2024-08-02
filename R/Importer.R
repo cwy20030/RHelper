@@ -71,7 +71,7 @@ Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = 
 
   ## Check if the Directory is a file already -------------
 
-  Directory = DirChecker(Dir = Directory)
+  Directory = DirClass(Dir = Directory)
   if (!class(Directory) == "Folder") {
     File_Type = class(Directory) # Update File Type
 
