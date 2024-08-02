@@ -157,7 +157,7 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
    ### Version Control ------
    if (isTRUE(Commit)) {
       if (isTRUE(Version_Control)) {
-        VControl(Directory = Directory,
+        VControl(Dir = Directory,
                  dfName = "Dictionary",
                  extension = ".xlsx",
                  category = "Dictionary")

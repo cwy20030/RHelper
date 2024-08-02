@@ -1,8 +1,8 @@
-VControl = function(Directory,dfName,extension,category){
+VControl = function(Dir, dfName, extension, category){
 
-  Directory = DirSetting(Directory)
+  if(is.null(Dir))  Dir = DirSetting(Dir)
 
-  VersionDir = paste0(Directory,"Version History/",category,"/")
+  VersionDir = paste0(Dir,"Version History/",category,"/")
   if (!dir.exists(VersionDir))
     dir.create(VersionDir)
 

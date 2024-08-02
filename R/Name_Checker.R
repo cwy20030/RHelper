@@ -27,7 +27,7 @@
 #'
 
 Name_Checker <- function(Names, Silent = TRUE ){
-  if (!require("stringi",character.only = TRUE)) stop("Package stringi not found")
+
 
 
   Names <- stri_trans_general(Names,id = "Latin-ASCII")

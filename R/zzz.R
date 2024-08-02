@@ -3,7 +3,7 @@
 
   packageStartupMessage(
 
-    cat("
+"
       _ _ _    ____   ____
     ||  _  ||   ||     ||
     || |_| ||   ||     ||   _ _ _           _ _ _   _ _ _   _ _ _
@@ -16,11 +16,26 @@
                                 Version 1.9
 "
 
-  ) )
+  )
 }
 
 
+
+
+.onLoad <- function(libname, pkgname) {
+  if (getRversion() >= "3.1.0") {
+    utils::globalVariables(c("RHSetting"))
+  }
+}
+
+
+
+
+
 .onUnload = function(libname, pkgname){
+
+  if(getRversion() >= "3.1.0")  EnvSetUp()
+
 
   if (exists("RHSetting",envir = .GlobalEnv)) {
 

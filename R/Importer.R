@@ -73,7 +73,7 @@ Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = 
   ## Check if the Directory is a file already -------------
 
   Directory = DirClass(Dir = Directory)
-  if (!class(Directory) == "Folder") {
+  if (!inherits(Directory, "Folder")) {
     File_Type = class(Directory) # Update File Type
 
     Keyword = gsub("^.*/(.*?)\\..*$","\\1",Directory) # Update Keyword

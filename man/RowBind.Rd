@@ -29,13 +29,17 @@ data("sleep")
 Variables = names(sleep)
 
 # Split the data by half based on the extra hours of sleep
-sleep.1 = subset.data.frame(sleep,subset = sleep$extra<2) # less than 2-hour increase on total sleep time
-sleep.2 = subset.data.frame(sleep,subset = sleep$extra>=2)  # more than 2-hour increase on total sleep time
+sleep.1 = subset.data.frame(sleep,subset = sleep$extra<2)
+# less than 2-hour increase on total sleep time
+sleep.2 = subset.data.frame(sleep,subset = sleep$extra>=2)
+# more than 2-hour increase on total sleep time
 
-# Generate a variable in sleep.1 dataset to identify negative changes in sleep time
+# Generate a variable in sleep.1 dataset to identify negative changes in
+# sleep time
 sleep.1$SleepReduction  = factor(ifelse(sleep.1$extra < 0, 1, 0))
 
-# First, try using the base code rbind (remove the # sign before executing the following line.)
+# First, try using the base code rbind (remove the # sign before executing
+# the following line.)
 #rbind(sleep.1,sleep.2)
 
 # Now, let's try RowBind
