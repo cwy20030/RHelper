@@ -3,7 +3,7 @@
 #' Based on the dictionary prepared by Lexicographer, Librarian will prepare the variables within a dataset ready for analysis.
 #'
 #' @param Data a data.frame
-#' @param Directory Directory for the project
+#' @param Dictionary the Dictionary to be used as a reference and data.frame preparation. If not specified, a new Dictionary will be created.
 #' @param Missing_Identifier Values identified as missing
 #' @param KeyExclude Values to be excluded
 #' @param NewName Name name for the modified data.
@@ -34,10 +34,33 @@ for (i in names(Data)) {
 }
 
 
+  # Change the font of the letters in Variable type
+  Dictionary$Variable$Type = tolower(Dictionary$Variable$Type)
+
 # Handling Factor ---------------------
   factor_list <- Dictionary$Variables[Dictionary$Variable$Type %in% c("factor","ordinal/categorical","binary")]
   for (i in factor_list) Data[[i]] = as.factor(as.character(Data[[i]]))
 
+  # Handling Ordinal Data ---------------------
+  Ordinal_list <- Dictionary$Variables[Dictionary$Variable$Type %in% c("ordinal")]
+  for (i in Ordinal_list) {
+
+    typ = tolower(Dictionary$Value$Type[Dictionary$Value$Variable %in% i])
+    # Set Reference level and order
+    if ("ref" %in% typ){ # When Reference is specified.
+      LEV = Dictionary$Value$Value[Dictionary$Value$Variable]
+      REF = Dictionary$Value$Value[Dictionary$Value$Variable %in% i & typ == "ref"]
+      Levels = c(REF, LEV[!LEV %in% REF])
+    } else {  # When Reference is NOT specified.
+      LEV = levels(factor(as.character(Data[[i]])))
+      REF = LEV[1]
+      Levels = c(REF, LEV[!LEV %in% REF])
+    }
+
+    message(paste0( REF, " is set as the reference level for ", i))
+
+    Data[[i]] = factor(as.character(Data[[i]]),levels = Levels, ordered = T)
+  }
 
   # Handling Numeric---------------------
   Numeric_list <- Dictionary$Variables[Dictionary$Variable$Type %in% c("numeric","integer")]

@@ -18,6 +18,7 @@
 #' @param Exclude Specify keywords to exclude specific files from importation <Default: FALSE, i.e., exclude none>
 #' @param inList Binary operator identify if to import all files into a large list <Default: FALSE, i.e., import each separately into individual dataframe>
 #' @param Meta_List_Name The name assigned to the meta data list if inList is TRUE <Default: df_list>
+#' @param Progress a logical indicator to specify whether to report the importation progress
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 #' @keywords import, read
 #' @export

@@ -96,7 +96,7 @@ VDocument = function(Data){
 
   Value$Variable = var
   Value$Value = unname(unlist(UniqueValues))
-
+  Value$Type = "Value"
   Value$Type[which(is.na(Value$Value))] = "Missing"
 
 

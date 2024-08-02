@@ -15,13 +15,13 @@ Librarian(
 \arguments{
 \item{Data}{a data.frame}
 
+\item{Dictionary}{the Dictionary to be used as a reference and data.frame preparation. If not specified, a new Dictionary will be created.}
+
 \item{Missing_Identifier}{Values identified as missing}
 
 \item{KeyExclude}{Values to be excluded}
 
 \item{NewName}{Name name for the modified data.}
-
-\item{Directory}{Directory for the project}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)

@@ -32,6 +32,8 @@ Importer(
 \item{inList}{Binary operator identify if to import all files into a large list <Default: FALSE, i.e., import each separately into individual dataframe>}
 
 \item{Meta_List_Name}{The name assigned to the meta data list if inList is TRUE <Default: df_list>}
+
+\item{Progress}{a logical indicator to specify whether to report the importation progress}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
