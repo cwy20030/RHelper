@@ -20,6 +20,10 @@ Imports:
     tools,
     utils,
     writexl
+Suggests: 
+    lattice,
+    latticeExtra,
+    zoo
 License: GPL (>= 3)
 URL: https://github.com/cwy20030/RHelper
 BugReports: https://github.com/cwy20030/RHelper/issues
@@ -28,3 +32,4 @@ ByteCompile: true
 LazyData: true
 RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
+
