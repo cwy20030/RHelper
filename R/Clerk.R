@@ -7,9 +7,11 @@
 #' @export
 #' @examples
 #'
-#' R_USER = Sys.getenv("R_USER")
-#' Clerk(R_USER)
+#' HOME = Sys.getenv("HOME")
 #'
+#' print(HOME)
+#'
+#' Clerk(HOME)
 #'
 
 

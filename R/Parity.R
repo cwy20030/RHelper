@@ -8,7 +8,9 @@
 #' @return If \code{switch} is FALSE, returns a the number's class and Parity. If \code{switch} is TRUE, returns a new number of the opposite Parity. If \code{goal} is set to "odd" or "even", ensure the number to be the designated parity.
 #' @keywords even, odd, Parity
 #' @export
-#' @examples
+#' @examplesIf interactive()
+#' # example code
+#'
 #'
 #' # Generate an array of possible numbers for data length
 #' Pool = 1000:12000
@@ -29,6 +31,7 @@
 #' data = rgamma(n, shape = p1, scale = p2)
 #'
 #' # Try smoothing the data with the medians using moving window via zoo
+#' library("lattice")
 #' library("zoo")
 #'
 #' #' ## the length of the window

@@ -22,6 +22,9 @@ If \code{switch} is FALSE, returns a the number's class and Parity. If \code{swi
 This function will check if a number is odd or even. By using the switch subfunction, users may change the Parity of the number (by adding/subtracting 1).
 }
 \examples{
+\dontshow{if (interactive()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# example code
+
 
 # Generate an array of possible numbers for data length
 Pool = 1000:12000
@@ -42,6 +45,7 @@ p2 = sample(Parameter, size = 1)
 data = rgamma(n, shape = p1, scale = p2)
 
 # Try smoothing the data with the medians using moving window via zoo
+library("lattice")
 library("zoo")
 
 #' ## the length of the window
@@ -72,6 +76,7 @@ length(rollmedian(dataNew, k = K)) == length(data)
 K = Parity(K, goal = "odd")
 
 # Now rerun rollmedian again
+\dontshow{\}) # examplesIf}
 }
 \keyword{Parity}
 \keyword{even,}
