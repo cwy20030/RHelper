@@ -107,6 +107,10 @@ Parity = function(num, goal = NULL, switch = FALSE, method = "add"){
   return(num)
 
 
+  } else if(!is.null(goal)) {
+
+  return(num)
+
   } else {
 
   return(class(num))
