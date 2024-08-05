@@ -32,7 +32,7 @@
 #' library("zoo")
 #'
 #' #' ## the length of the window
-#' K = floor(length(n) * 0.1)
+#' K = floor(n * 0.1)
 #'
 #' #Identify the Parity
 #' Parity(K)
@@ -67,8 +67,13 @@
 
 Parity = function(num, goal = NULL, switch = FALSE, method = "add"){
 
+  if (!inherits(num,c("numeric","integer"))) stop("num has to be a number.")
   if (!floor(num) == num) stop(paste0("decimal points detected in ",num,"!"))
-  if (class(num) %in% c("numeric")) num = as.integer(num)
+
+  # Clear class history
+  if (inherits(num,c("even","odd"))) class(num) = class(num)[!class(num) %in% c("even","odd")]
+
+  if (inherits(num,"numeric")) num = as.integer(num)
 
 
   # Parity -------
@@ -103,6 +108,7 @@ Parity = function(num, goal = NULL, switch = FALSE, method = "add"){
     ## Subtract 1
   if (method == "minus") num = num - 1
 
+  class(num) = Parity(num)
 
   return(num)
 
@@ -121,3 +127,4 @@ Parity = function(num, goal = NULL, switch = FALSE, method = "add"){
 
 
 }
+

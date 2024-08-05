@@ -45,7 +45,7 @@ data = rgamma(n, shape = p1, scale = p2)
 library("zoo")
 
 #' ## the length of the window
-K = floor(length(n) * 0.1)
+K = floor(n * 0.1)
 
 #Identify the Parity
 Parity(K)
