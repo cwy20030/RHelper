@@ -21,7 +21,7 @@ You can install the released version of RHelper from Github with the following c
 
 ``` r
 install.packages("devtools")
-devtools::install_github("insightsengineering/cards")
+devtools::install_github("cwy20030/RHelper")
 ``` 
 
 
