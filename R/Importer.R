@@ -82,7 +82,8 @@ Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = 
   }
 
 
-  File_Type = paste0(".",File_Type) # Add "." before the file type
+  if(!grepl("\\.",File_Type))
+    File_Type = paste0(".",File_Type) # Add "." before the file type
 
 
 

@@ -7,7 +7,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-7234-7375"))
 Author: C. William Yao [aut, cre, cph] (<https://orcid.org/0000-0002-7234-7375>)
 Maintainer: C. William Yao <chun.william.yao.cnmtl@ssss.gouv.qc.ca>
-Date: 2024-08-05
+Date: 2024-08-06
 Depends: 
     R (>= 3.1.0)
 Imports: 
