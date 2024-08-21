@@ -1,6 +1,16 @@
 Revision history for the R/RHelper package
 -----------------------------------------
 
+## Version 1.9.2, 2024-08-21
+
+- Minor update on the pakcage:
+
+- Debug internal RHSetting update
+
+## Version 1.9.1, 2024-08-05
+
+- Added Parity() to check the parity of a number (even vs. odd) and a small sub-function within to ensure the number's parity
+
 ## Version 1.9.0, 2024-07-12
 
 - Major update on the package:

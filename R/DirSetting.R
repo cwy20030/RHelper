@@ -4,10 +4,12 @@
 
 DirSetting = function(Dir = NULL){
 
+  Trigger = FALSE
+
   # Directory unspecified ------------
   if (is.null(Dir)) {
 
-
+    Trigger = TRUE
     if (!exists("RHSetting",envir = .GlobalEnv))  EnvSetUp()
 
     RHSetting = get("RHSetting",envir = .GlobalEnv)
@@ -62,15 +64,17 @@ Do you agree to proceed (reply with 1 or 2) ?")
 
   ### Update DefaultDir -------
   #### For initial commit
-  if (!"DefaultDir" %in% RHSetting)
-    RHSetting$DefaultDir = Dir
+  if (Trigger)
+    if (!"DefaultDir" %in% RHSetting)
+      RHSetting$DefaultDir = Dir
 
   #### If default directory was not properly specified
-  if ("DefaultDir" %in% RHSetting & !Dir == RHelper$DefaultDir){
-    message("Improper directory grammar was found in default directory.
+  if (Trigger)
+    if ("DefaultDir" %in% RHSetting & !Dir == RHelper$DefaultDir){
+      message("Improper directory grammar was found in default directory.
             Correction was made and assigned.")
-    RHSetting$DefaultDir = Dir
-  }
+      RHSetting$DefaultDir = Dir
+    }
 
 
 
