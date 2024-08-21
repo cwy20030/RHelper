@@ -70,7 +70,7 @@ Do you agree to proceed (reply with 1 or 2) ?")
 
   #### If default directory was not properly specified
   if (Trigger)
-    if ("DefaultDir" %in% RHSetting & !Dir == RHelper$DefaultDir){
+    if ("DefaultDir" %in% RHSetting & !Dir == RHSetting$DefaultDir){
       message("Improper directory grammar was found in default directory.
             Correction was made and assigned.")
       RHSetting$DefaultDir = Dir
