@@ -39,7 +39,7 @@
 #'
 #'
 
-Lexicographer <- function(Directory=NULL, Data=NULL, Commit = T, Version_Control = T ){
+Lexicographer <- function(Directory=NULL, Data = NULL, Commit = F, Version_Control = T ){
 
 
 # Check Pre-requisit --------

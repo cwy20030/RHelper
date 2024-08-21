@@ -56,7 +56,7 @@ Do you agree to proceed (reply with 1 or 2) ?")
   Dir = gsub("\\\\","/",Dir)
 
   # Check directory existance status -------------
-  if (!dir.exists(Dir)) stop(paste0(Dir," cannot be found. Please, check the spelling.") )
+  if (!dir.exists(Dir) & !file.exists(Dir)) stop(paste0(Dir," cannot be found. Please, check the spelling.") )
 
   # Check if the last character is a slash
   Closing = substr(Dir, nchar(Dir), nchar(Dir)) == "/"
