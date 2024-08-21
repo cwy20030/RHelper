@@ -4,7 +4,7 @@
 [![R-CMD-check](https://github.com/cwy20030/RHelper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cwy20030/RHelper/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/RHelper)](https://cran.r-project.org/package=RHelper)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
-![GitHub All Releases](https://img.shields.io/github/downloads/cwy20030/RHelper/total.svg)
+![Downloads](https://img.shields.io/github/downloads/cwy20030/RHelper/total.svg)
 
 <div align="center">
   <img src="RHelper-logos.jpeg" width="300px" />
