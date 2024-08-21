@@ -38,6 +38,7 @@ Do you agree to proceed (reply with 1 or 2) ?")
         Dir <- readline(prompt = paste0("Please, manually enter the directory."))
 
         if (toupper(Dir) %in% c("ABORT","NA","EXIT","NO")) stop("Abort! Please, find the directory and try again.")
+
       }
 
       ##### Yes
@@ -45,21 +46,39 @@ Do you agree to proceed (reply with 1 or 2) ?")
 
         Dir = getwd() # Working Directory as Directory
       }
+
     }
   }
 
-  # Check directory existance status -------------
-  if (!dir.exists(Dir)) stop(paste0(Dir," cannot be found. Please, check the spelling.") )
-
   # Correct Directory Grammar ----------------
   Dir = gsub("\\\\","/",Dir)
+
+  # Check directory existance status -------------
+  if (!dir.exists(Dir)) stop(paste0(Dir," cannot be found. Please, check the spelling.") )
 
   # Check if the last character is a slash
   Closing = substr(Dir, nchar(Dir), nchar(Dir)) == "/"
   if (!Closing) Dir = paste0(Dir,"/")
 
+  ### Update DefaultDir -------
+  #### For initial commit
+  if (!"DefaultDir" %in% RHSetting)
+    RHSetting$DefaultDir = Dir
+
+  #### If default directory was not properly specified
+  if ("DefaultDir" %in% RHSetting & !Dir == RHelper$DefaultDir){
+    message("Improper directory grammar was found in default directory.
+            Correction was made and assigned.")
+    RHSetting$DefaultDir = Dir
+  }
+
+
+
   ## Export Direcotry ----------
   return(Dir)
+
+
+  assign("RHSetting", RHSetting, envir = .GlobalEnv)
 
 
 
