@@ -118,9 +118,9 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
 
 ### If there is a dictionary already, import it -------------
 
-  Path = ClerkLog$File_Path[ClerkLog$File_Name == "Dictionary"]
 
-  Importer(Path)
+
+  Importer(Directory, File_Type = "xlsx",Keyword = "Dictionary")
   Dictionary = get("Dictionary",envir = .GlobalEnv)
 }
 
