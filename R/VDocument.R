@@ -11,8 +11,8 @@ VDocument = function(Data){
 
     # Check if the variable is all numbers
     ## If yes, turn them into numeric form
-    if (all(grepl("^\\d+$|^\\d*\\.?\\d+$", na.omit(cl)))) cl = as.numeric(as.character(cl))
-
+    if (all(grepl("^\\d+$", na.omit(cl)))) cl = as.numeric(as.character(cl))
+    if (all(grepl("^\\d*\\.?\\d+$", na.omit(cl)))) cl = as.numeric(as.character(cl))
 
 
     # Non-character Variables
