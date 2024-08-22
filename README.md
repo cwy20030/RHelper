@@ -27,7 +27,7 @@ install.packages("devtools")
 devtools::install_github("cwy20030/RHelper")
 ``` 
 
-## To Update
+## How to update RHelper?
 To update the full-feature package, hosted on GitHub, use the internal update function. 
 
 ``` r
