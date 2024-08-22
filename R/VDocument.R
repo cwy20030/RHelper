@@ -94,7 +94,7 @@ VDocument = function(Data){
   names(Value)  =   c("Variable",	"Type",	"Unit", "Value", "Definition", "Note")
   Value[names(Value)] = ""
 
-  Value$Variable = var
+  Value$Variable = names(unlist(UniqueValues))
   Value$Value = unname(unlist(UniqueValues))
   Value$Type = "Value"
   Value$Type[which(is.na(Value$Value))] = "Missing"

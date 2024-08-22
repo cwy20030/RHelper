@@ -4,7 +4,13 @@
 \alias{Lexicographer}
 \title{Project-oriented Dictionary Composition: Lexicographer}
 \usage{
-Lexicographer(Directory = NULL, Data = NULL, Commit = F, Version_Control = T)
+Lexicographer(
+  Directory = NULL,
+  Data = NULL,
+  Commit = F,
+  Version_Control = T,
+  Recheck = FALSE
+)
 }
 \arguments{
 \item{Directory}{Directory of where the dictionary was stored (e.g. "C:/Users/\emph{\strong{YOUR USERNAME}}/UPSTREAM FOLDER/.../FOLDER NAME/"). If not specified, the default is set to the working directory.  Note for first time user or new project setup, a new dictionary will be automatically generated if not found.}
@@ -14,6 +20,8 @@ Lexicographer(Directory = NULL, Data = NULL, Commit = F, Version_Control = T)
 \item{Commit}{A logical indicator to specify whether to save the update (default = TRUE)}
 
 \item{Version_Control}{A logical indicator to specify whether to create a version history of the Dictionary. (default = TRUE)}
+
+\item{Recheck}{A logical indicator to specify whether to recheck all variables and values (default = FALSE). Please, be aware that when tasked (i.e., set the Recheck value to TRUE), it may overwrite the manual documentation. To avoid unintentionally erasing manual documentation, please, ENSURE that the Commit parameter is set to FALSE. Only set Commit to true when users are sure and confident of the newly modified version after rechecking the documentaiton.}
 }
 \value{
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)

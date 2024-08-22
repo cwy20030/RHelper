@@ -9,6 +9,7 @@
 #' @param Data a data.frame
 #' @param Commit A logical indicator to specify whether to save the update (default = TRUE)
 #' @param Version_Control A logical indicator to specify whether to create a version history of the Dictionary. (default = TRUE)
+#' @param Recheck A logical indicator to specify whether to recheck all variables and values (default = FALSE). Please, be aware that when tasked (i.e., set the Recheck value to TRUE), it may overwrite the manual documentation. To avoid unintentionally erasing manual documentation, please, ENSURE that the Commit parameter is set to FALSE. Only set Commit to true when users are sure and confident of the newly modified version after rechecking the documentaiton.
 #' @return Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 #' @keywords Dictionary, Lexicographer
 #' @export
@@ -39,7 +40,7 @@
 #'
 #'
 
-Lexicographer <- function(Directory=NULL, Data = NULL, Commit = F, Version_Control = T ){
+Lexicographer <- function(Directory = NULL, Data = NULL, Commit = F, Version_Control = T, Recheck = FALSE ){
 
 
 # Check Pre-requisit --------
@@ -135,7 +136,12 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
  ## Step 1: Check Existance of Variable Names within the Existing Dictionary -------
    VNames = names(Data)
 
+if (!Recheck) {
+
    Exclude = VNames[VNames %in% Dictionary$Variable$Variable]
+
+   Exclude = Exclude[Exclude %in% Dictionary$Value$Variable]
+
 
    if (length(Exclude) > 0) {
      warning(paste0("Following variables ", paste0(Exclude,collapse = ", ") ," had been documented in prior session. "))
@@ -146,7 +152,7 @@ As a gentle reminder, Lexicographer can also be used to document newly created v
 
      SubData = Data
    }
-
+}
 
 
   ## Step 2: Check Existance of Variable Names within the Existing Dictionary ----

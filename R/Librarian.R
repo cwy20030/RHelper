@@ -24,7 +24,7 @@ Librarian <- function(Data, Dictionary = NULL, Missing_Identifier = NA, KeyExclu
 # Handling Missing Value ---------------------
 for (i in names(Data)) {
 
-  Dictionary$Value$Type[Dictionary$Value$Value %in%  Missing_Identifier & Dictionary$Value$Variable == i] = "Missing"
+  Dictionary$Value$Type[Dictionary$Value$Value %in% Missing_Identifier & Dictionary$Value$Variable == i] = "Missing"
 
   Missing = Dictionary$Value$Value[Dictionary$Value$Type == "Missing" & Dictionary$Value$Variable == i]
 
