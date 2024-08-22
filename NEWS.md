@@ -7,7 +7,9 @@ Revision history for the R/RHelper package
 
 - Debugged internal RHSetting update
 
-- Added ListTree() to print out any symertrical or assymetrucal list and its content.
+- Added ListTree() to map out the structure of any symertrical or assymetrucal list and its content. 
+
+- Added update() to automatically check the version and update RHelper. Currently, the package is updated based on the GitHub hosted version.
 
 ## Version 1.9.1, 2024-08-05
 
