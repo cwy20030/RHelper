@@ -1,5 +1,5 @@
 Package: RHelper
-Version: 1.9.2
+Version: 1.9.3
 Title: A R Package to Facilitate Coding in R
 Description: A 'grocery store' library containing various functions, designed to simplify/document coding in R. For all users (including beginners), RHelper has simplified various data management procedures into one-line commands. These include mapping folder contents (Clerk), bulk data importation across various formats (Importer), and organizing the global environment (e.g., Who_is and Merger). For experienced users, RHelper features code logging (Historian) and systematic documentation for data preparation (Librarian). These functions can help users not only track their code execution but also improve reproducibility for future projects.
 Authors@R: 
@@ -7,7 +7,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-7234-7375"))
 Author: C. William Yao [aut, cre, cph] (<https://orcid.org/0000-0002-7234-7375>)
 Maintainer: C. William Yao <chun.william.yao.cnmtl@ssss.gouv.qc.ca>
-Date: 2024-08-22
+Date: 2024-09-11
 Depends: 
     R (>= 3.1.0)
 Imports: 
