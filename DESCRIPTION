@@ -5,10 +5,10 @@ Description: A 'grocery store' library containing various functions, designed to
 Authors@R: c(
     person("C. William", "Yao", , "chun.william.yao.cnmtl@ssss.gouv.qc.ca", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-7234-7375")),
-    person("Guido", "Simonelli", , "guido.simonelli@umontreal.ca", role = "ctb",
+    person("Guido", "Simonelli", , "guido.simonelli@umontreal.ca", role = c("aut", "ctb"),
            comment = c(ORCID = "0000-0002-5400-319X"))
   )
-Author: C. William Yao [aut, cre, cph] (<https://orcid.org/0000-0002-7234-7375>), Guido Simonelli [ctb]
+Author: C. William Yao [aut, cre, cph] (<https://orcid.org/0000-0002-7234-7375>), Guido Simonelli [aut ctb]
 Maintainer: C. William Yao <chun.william.yao.cnmtl@ssss.gouv.qc.ca>
 Date: 2024-09-13
 Depends: 
