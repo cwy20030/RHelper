@@ -1,11 +1,20 @@
 Revision history for the R/RHelper package
 -----------------------------------------
+## Version 1.9.3, 2024-09-24
+
+- Minor update on the pakcage:
+
+- Added Inject() and Inject.Row() to add values or spacings (e.g., "" , NA) to either a vector or a data.frame
+
+- Added Reorder() to reorder data.frame by row or column 
 
 ## Version 1.9.2, 2024-08-21
 
 - Minor update on the pakcage:
 
 - Debug internal RHSetting update
+
+- Added ListTree() to print out any symertrical or assymetrucal list and its content.
 
 ## Version 1.9.1, 2024-08-05
 
