@@ -24,19 +24,5 @@ install.packages("devtools")
 devtools::install_github("cwy20030/RHelper")
 ``` 
 
-## Update
-To update RHelper, please, run <i> update() </i>
-
-``` r
-library("RHelper")
-update()
-``` 
-
-## Citation
-To cite this package, please, run the following code in R.
-
-``` r
-citation("RHelper")
-``` 
 
 
