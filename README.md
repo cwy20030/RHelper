@@ -18,11 +18,21 @@ RHelper features code logging (Historian), systematic documentation for data pre
 
 ## Installation
 You can install the released version of RHelper from Github with the following code.
-
 ``` r
 install.packages("devtools")
 devtools::install_github("cwy20030/RHelper")
 ``` 
 
+## Update
+To update RHelper, please, run <i> update() </i>
+``` r
+library("RHelper")
+update()
+```
 
+## Citation
+To cite this package, please, run the following code in R.
+``` r
+citation("RHelper")
+``` 
 
