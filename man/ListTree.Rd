@@ -4,10 +4,12 @@
 \alias{ListTree}
 \title{A function to print out the names of the sublist and their items}
 \usage{
-ListTree(object, Level = 0)
+ListTree(object, ...)
 }
 \arguments{
 \item{object}{A list.}
+
+\item{...}{Internal parameter space holder}
 }
 \description{
 This function will loop over all the sublists and their items within a list and print out their names and structures.

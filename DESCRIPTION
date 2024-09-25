@@ -10,7 +10,7 @@ Authors@R: c(
   )
 Author: C. William Yao [aut, cre, cph] (<https://orcid.org/0000-0002-7234-7375>), Guido Simonelli [aut ctb]
 Maintainer: C. William Yao <chun.william.yao.cnmtl@ssss.gouv.qc.ca>
-Date: 2024-09-24
+Date: 2024-09-25
 Depends: 
     R (>= 3.1.0)
 Imports: 
@@ -19,6 +19,7 @@ Imports:
     methods,
     readr,
     readxl,
+    rlang,
     stats,
     stringi,
     tools,

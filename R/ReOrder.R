@@ -60,7 +60,7 @@ ReOrder = function(Data, Order) {
   if (length(NewCol) > 0) Order = c(Order, NewCol)
 
   ## Reordered Data
-  Data1 = Data[Order]
+  Data = Data[Order]
   }
 
 

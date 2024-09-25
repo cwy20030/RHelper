@@ -1,8 +1,9 @@
 #' A function to print out the names of the sublist and their items
 #'
 #' This function will loop over all the sublists and their items within a list and print out their names and structures.
-#'
+#' @import rlang
 #' @param object A list.
+#' @param ... Internal parameter space holder
 #' @export
 #' @examplesIf interactive()
 #'
@@ -21,16 +22,20 @@
 #'
 #'
 
-ListTree <- function(object, Level = 0) {
+ListTree <- function(object, ...) {
 
 
+  # Handling Hidden List ---------
+    Level <- list2(...)
+    if (length(Level) == 0) Level$Layer = 0
 
-    if(Level == 0)   cat(deparse(substitute(object)), "\n")
-    indent.str <- paste(rep.int("  ", Level), collapse = "")
+
+    if(Level$Layer == 0)   cat(deparse(substitute(object)), "\n")
+    indent.str <- paste(rep.int("  ", Level$Layer), collapse = "")
     for (name in names(object)) {
       cat(indent.str, paste0("$", name), "\n")
       if (inherits(object[[name]],"list")) {
-        ListTree(object[[name]], Level + 1)
+        ListTree(object[[name]], Layer = Level$Layer + 1)
       }
 
   }
