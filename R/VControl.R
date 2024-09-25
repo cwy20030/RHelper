@@ -8,7 +8,7 @@ VControl = function(Dir, dfName, extension, category){
 
   Date = Name_Checker(Sys.Date(),Silent = T)
 
-  file.rename(from = paste0(Direcotry,dfName,extension),
+  file.rename(from = paste0(Dir,dfName,extension),
               to = paste0(VersionDir,paste0(dfName,"_",Date),extension))
 
 }
