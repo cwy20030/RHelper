@@ -31,6 +31,7 @@ To update RHelper, please, run <i> update() </i>
 library("RHelper")
 update()
 ```
+*** Note, if the installed RHelper version is too old, it may be necessary to reinstall it.
 
 ## Citation
 To cite this package, please, run the following code in R.
