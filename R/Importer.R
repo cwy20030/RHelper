@@ -67,9 +67,6 @@ Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = 
     }
 
 
-  # Check & Correct Directory -------------------
-  Directory = DirSetting(Dir = Directory)
-
   ## Check if the Directory is a file already -------------
 
   Directory = DirClass(Dir = Directory)
@@ -81,6 +78,9 @@ Importer = function(Directory = NULL, File_Type = "csv", Encoding = "", Delim = 
     Directory =  as.character(gsub(paste0(Keyword,".*"),"\\1",Directory)) # Update File Type
   }
 
+
+  # Check & Correct Directory -------------------
+  Directory = DirSetting(Dir = Directory)
 
   if(!grepl("\\.",File_Type))
     File_Type = paste0(".",File_Type) # Add "." before the file type

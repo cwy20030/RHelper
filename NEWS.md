@@ -1,5 +1,11 @@
 Revision history for the R/RHelper package
 -----------------------------------------
+## Version 1.9.4, 2025-02-24
+
+- Minor update on the pakcage:
+
+- Fix small bug in file/folder detection in Importer()
+
 ## Version 1.9.3, 2024-09-24
 
 - Minor update on the pakcage:
