@@ -2,7 +2,7 @@
 % Please edit documentation in R/Butler.R
 \name{Butler}
 \alias{Butler}
-\title{A function to help keeping the global environment organized}
+\title{Butler}
 \usage{
 Butler(Task, Keep = NULL)
 }

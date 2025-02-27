@@ -2,7 +2,7 @@
 % Please edit documentation in R/Importer.R
 \name{Importer}
 \alias{Importer}
-\title{A Function to Automatically Import Files in a Folder}
+\title{Importer}
 \usage{
 Importer(
   Directory = NULL,
@@ -39,9 +39,11 @@ Importer(
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
-This function imports files with the same file type as specified in bulk. Users are required to provide the Directory to the folder containing files to be imported.
+A Function to Automatically Import Files in a Folder
 }
 \details{
+This function imports files with the same file type as specified in bulk. Users are required to provide the Directory to the folder containing files to be imported.
+
 Importer supports most of the commonly used data format, including  "txt", "tsv", "csv", "xls(x)","sas", and "sav".
 
 All sheets contained within an excel file will be imported into a data list structure while keeping the assigned sheet names for each sub-list.

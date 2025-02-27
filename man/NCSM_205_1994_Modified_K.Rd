@@ -3,7 +3,7 @@
 \docType{data}
 \name{NCSM_205_1994_Modified_K}
 \alias{NCSM_205_1994_Modified_K}
-\title{Subjective sleep report of 100 participants}
+\title{data}
 \format{
 A simulated data with 100 rows and 5 variables:
 \describe{
@@ -18,13 +18,15 @@ A simulated data with 100 rows and 5 variables:
 data(NCSM_205_1994_Modified_K)
 }
 \description{
+Subjective sleep report of 100 participants
+}
+\details{
 This dataset contains SIMULATED sleep reports of 100 participants interviewed in 1994.
 Each row contains the information of an "interviewee" about their psychological distress
 level in the past month and experiences of insomnia and apnea. Besides the purpose of
 helping users familiarize with the RHelper package. The simulated dataset can also be used
 as a practical tool for practicing/training research analysis in R.
-}
-\details{
+
 "Research" Questions:
 \enumerate{
 \item Is there an association between apnea symptom and participants' psychological distress level?

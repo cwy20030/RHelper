@@ -2,7 +2,7 @@
 % Please edit documentation in R/ListTree.R
 \name{ListTree}
 \alias{ListTree}
-\title{A function to print out the names of the sublist and their items}
+\title{ListTree}
 \usage{
 ListTree(object, ...)
 }
@@ -12,6 +12,9 @@ ListTree(object, ...)
 \item{...}{Internal parameter space holder}
 }
 \description{
+A function to print out the names of the sublist and their items
+}
+\details{
 This function will loop over all the sublists and their items within a list and print out their names and structures.
 }
 \examples{

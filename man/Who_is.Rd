@@ -2,7 +2,7 @@
 % Please edit documentation in R/Who_is.R
 \name{Who_is}
 \alias{Who_is}
-\title{A quick function to print the names of all elements within a specific type in the environment.}
+\title{Who_is}
 \usage{
 Who_is(Type = c("Data.frame", "Function", "List", "Value"), print_out = FALSE)
 }
@@ -15,6 +15,9 @@ Who_is(Type = c("Data.frame", "Function", "List", "Value"), print_out = FALSE)
 A savable report with AIC index
 }
 \description{
+A quick function to print the names of all elements within a specific type in the environment.
+}
+\details{
 This function will print out the names of all data.frame, list, or functions in the environment.
 It is particularly useful when wanting to save computer memory to optimize the use of R.
 }

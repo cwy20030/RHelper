@@ -2,11 +2,14 @@
 % Please edit documentation in R/update.R
 \name{update}
 \alias{update}
-\title{A function to check the latest release version of the package and update it.}
+\title{update}
 \usage{
 update()
 }
 \description{
+A function to check the latest release version of RHelper package and update it.
+}
+\details{
 This function will check the latest version of RHelper and update if needed.
 }
 \keyword{RHelper}

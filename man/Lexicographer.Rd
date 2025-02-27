@@ -2,7 +2,7 @@
 % Please edit documentation in R/Lexicographer.R
 \name{Lexicographer}
 \alias{Lexicographer}
-\title{Project-oriented Dictionary Composition: Lexicographer}
+\title{Lexicographer}
 \usage{
 Lexicographer(
   Directory = NULL,
@@ -27,6 +27,9 @@ Lexicographer(
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
+Project-oriented Dictionary Composition: Lexicographer
+}
+\details{
 This function will automatically document all the variables embeded in the project.
 When calling Lexicographer for the first time, Lexicographer will create a dictionary template at where the
 When activate Lexicographer, the

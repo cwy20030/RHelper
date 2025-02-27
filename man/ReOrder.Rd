@@ -2,7 +2,7 @@
 % Please edit documentation in R/ReOrder.R
 \name{ReOrder}
 \alias{ReOrder}
-\title{A function to reorder data.frame by column or row}
+\title{ReOrder}
 \usage{
 ReOrder(Data, Order)
 }
@@ -15,6 +15,9 @@ ReOrder(Data, Order)
 a reordered data.frame
 }
 \description{
+A function to reorder data.frame by column or row
+}
+\details{
 Based on the pre-specified order of column names or the levels of a factorial variable, ReOrder will reorganize the data.frame.
 }
 \keyword{order}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Naming_Variables.R
 \name{Naming_Variables}
 \alias{Naming_Variables}
-\title{A function listing out variables to faciliate writing codes or functions}
+\title{Naming_Variables}
 \usage{
 Naming_Variables(x, Delim = ",")
 }
@@ -15,6 +15,9 @@ Naming_Variables(x, Delim = ",")
 A long string with characters in quotation marks
 }
 \description{
+A function listing out variables to facilitate writing codes or functions
+}
+\details{
 This is a simple function that will print out values (e.g., strings, names or
 numbers) while keeping the quotation marks, which were otherwise not
 retained via paste or cat. This is particularly useful when manually

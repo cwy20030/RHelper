@@ -2,7 +2,7 @@
 % Please edit documentation in R/Librarian.R
 \name{Librarian}
 \alias{Librarian}
-\title{A function to help prepare a dataset for analysis}
+\title{Librarian}
 \usage{
 Librarian(
   Data,
@@ -27,6 +27,9 @@ Librarian(
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
+A function to help prepare a dataset for analysis
+}
+\details{
 Based on the dictionary prepared by Lexicographer, Librarian will prepare the variables within a dataset ready for analysis.
 }
 \keyword{librarian}

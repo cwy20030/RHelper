@@ -2,7 +2,7 @@
 % Please edit documentation in R/RowBind.R
 \name{RowBind}
 \alias{RowBind}
-\title{A Function to bind data.frame by row}
+\title{RowBind}
 \usage{
 RowBind(DFx, DFy, Keep = "SAME")
 }
@@ -17,6 +17,9 @@ RowBind(DFx, DFy, Keep = "SAME")
 a new row bond data.frame
 }
 \description{
+A Function to bind data.frame by row
+}
+\details{
 This function is an extension rbind (i.e., row bind or merge) without the traditional limits of column names and their orders. Users can choose to either keep only the columns with the same names ("SAME"), only based on one of the two data.frames ("x", "y", "either") or all existing columns ("ALL").
 }
 \examples{

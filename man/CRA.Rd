@@ -2,7 +2,7 @@
 % Please edit documentation in R/CRA.R
 \name{CRA}
 \alias{CRA}
-\title{A function that check and install missing dependencies for packages.}
+\title{CRA}
 \usage{
 CRA(Package, Install_Suggests = FALSE, Silent = FALSE)
 }
@@ -14,6 +14,9 @@ CRA(Package, Install_Suggests = FALSE, Silent = FALSE)
 \item{Silent}{A logical indicator for reporting summary.}
 }
 \description{
+A function that check and install missing dependencies for packages.
+}
+\details{
 The function - CRA (inspired by the acronym of Canadian Revenue Agency), will check if the dependent packages required are installed in the system. It is particularly helpful in the following scenarios.
 \enumerate{
 \item Installing a "developing" libraries from GitHub

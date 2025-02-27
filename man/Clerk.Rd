@@ -2,7 +2,7 @@
 % Please edit documentation in R/Clerk.R
 \name{Clerk}
 \alias{Clerk}
-\title{A function to automatically document files' properties contained in the directery/path specified.}
+\title{Clerk}
 \usage{
 Clerk(Dirs)
 }
@@ -13,6 +13,9 @@ Clerk(Dirs)
 Import files into your working enviroment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
+A function to automatically document files' properties contained in the directery/path specified.
+}
+\details{
 This function lists and documents all files contained within one or more directories (i.e., computer paths to folders of interest) specified by the user. This is suitable if one wish to import files from multiple folders into a data.list for analysis.
 }
 \examples{

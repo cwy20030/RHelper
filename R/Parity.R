@@ -1,6 +1,32 @@
-#' Identify the parity of a number (i.e., even or odd)
+#  File RHelper/R/Parity.R
+#  Part of the R package, https://www.R-project.org
+#
+#  Copyright (C) 2020-2025  C. William Yao, PhD
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+#
+#' @title Parity
 #'
+#' @description
+#' A function to identify the parity of a number (i.e., even or odd)
+#'
+#' @details
 #' This function will check if a number is odd or even. By using the switch subfunction, users may change the Parity of the number (by adding/subtracting 1).
+#'
+#'
 #' @param num a number
 #' @param goal a logical operater to ensure that the num is/will be "odd" or "even". This will overwrite the manual switch function.
 #' @param switch converting a number from even to odd and vice versa.

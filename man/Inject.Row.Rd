@@ -2,7 +2,7 @@
 % Please edit documentation in R/Inject.Row.R
 \name{Inject.Row}
 \alias{Inject.Row}
-\title{A dynamic function to allow users to add rows to specific location within a data.frame with or without values.}
+\title{Inject.Row}
 \usage{
 Inject.Row(df, Index, Variable = NULL, Value = NULL)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Parity.R
 \name{Parity}
 \alias{Parity}
-\title{Identify the parity of a number (i.e., even or odd)}
+\title{Parity}
 \usage{
 Parity(num, goal = NULL, switch = FALSE, method = "add")
 }
@@ -19,6 +19,9 @@ Parity(num, goal = NULL, switch = FALSE, method = "add")
 If \code{switch} is FALSE, returns a the number's class and Parity. If \code{switch} is TRUE, returns a new number of the opposite Parity. If \code{goal} is set to "odd" or "even", ensure the number to be the designated parity.
 }
 \description{
+A function to identify the parity of a number (i.e., even or odd)
+}
+\details{
 This function will check if a number is odd or even. By using the switch subfunction, users may change the Parity of the number (by adding/subtracting 1).
 }
 \examples{

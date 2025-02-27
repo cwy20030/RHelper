@@ -2,7 +2,7 @@
 % Please edit documentation in R/Merger.R
 \name{Merger}
 \alias{Merger}
-\title{A Function to Automatically Merging and Order Variables}
+\title{Merger}
 \usage{
 Merger(
   df_list,
@@ -30,6 +30,9 @@ Merger(
 export a merged data.frame to your working environment in R (i.e., Global Enviroment in R Studio)
 }
 \description{
+A Function to Automatically Merging and Order Variables
+}
+\details{
 This function is a bulk merger for data.frames. Users can decide whether to merge based on the structure of the referencing data.frame or each individual data.frame within the data list. Users may wish to use the Auto_Importer function in the RHelper.
 }
 \examples{

@@ -2,7 +2,7 @@
 % Please edit documentation in R/SandBox.R
 \name{SandBox}
 \alias{SandBox}
-\title{Create a SandBox (i.e., a temporary environment) to perform code testing or data manipulation without affecting the Global environment}
+\title{SandBox}
 \usage{
 SandBox(Expr, Show = TRUE, Commit = FALSE)
 }
@@ -17,6 +17,9 @@ SandBox(Expr, Show = TRUE, Commit = FALSE)
 Nothing unless committed
 }
 \description{
+A Function to create a SandBox (i.e., a temporary environment) to perform code testing or data manipulation without affecting the Global environment
+}
+\details{
 There are two main methods to use the SandBox.
 For simple tasks (e.g., categorizing a variable or test a simple function), the function SandBox would be enough.
 When performing more complex tasks, please, use PlayGround. Similar to the SandBox, the PlayGround also allows users

@@ -1,5 +1,29 @@
+#  File RHelper/R/Merger.R
+#  Part of the R package, https://www.R-project.org
+#
+#  Copyright (C) 2020-2025  C. William Yao, PhD
+#
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#
+#  You should have received a copy of the GNU General Public License
+#  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#
+#
+#' @title Merger
+#'
+#' @description
 #' A Function to Automatically Merging and Order Variables
 #'
+#' @details
 #' This function is a bulk merger for data.frames. Users can decide whether to merge based on the structure of the referencing data.frame or each individual data.frame within the data list. Users may wish to use the Auto_Importer function in the RHelper.
 #'
 #' @param df_list A list of data.frame names to merge. Make sure that the data.frame have been imported to your environment. If the user wishes to import data.frame in bulk in a directory, one can use the Auto_Importer function from the library. <e.g., c("df_1","df_2","df_3")>

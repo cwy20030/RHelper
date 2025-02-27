@@ -2,7 +2,7 @@
 % Please edit documentation in R/Inject.R
 \name{Inject}
 \alias{Inject}
-\title{A function to inject specified values based on the index}
+\title{Inject}
 \usage{
 Inject(x, Index, Value)
 }
@@ -17,6 +17,9 @@ Inject(x, Index, Value)
 A new vector with values injected
 }
 \description{
+A function to inject specified values based on the index
+}
+\details{
 By providing the index (e.g., sequential ID of a vector or rowID of a
 data.frame/table), the function will add the specified values between i
 indice and the indice before it.

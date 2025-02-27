@@ -2,7 +2,7 @@
 % Please edit documentation in R/Name_Checker.R
 \name{Name_Checker}
 \alias{Name_Checker}
-\title{A Function to Check for Potentially Problematic Variable Names and Correct Them}
+\title{Name_Checker}
 \usage{
 Name_Checker(Names, Silent = TRUE)
 }
@@ -15,6 +15,9 @@ Name_Checker(Names, Silent = TRUE)
 'Corrected' variable names
 }
 \description{
+A Function to Check for Potentially Problematic Variable Names and Correct Them
+}
+\details{
 This function will loop over all data frames in the work environment. If a dataframe starts with a digit or a
 punctuation, the pipeline will add a "x" in front of it so the user will not need to wrap `` around
 the name of a data.frame during computation.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Historian.R
 \name{Historian}
 \alias{Historian}
-\title{A Function to Document Executed Codes by Date with Continuous Time Stamps Separating Different Entries}
+\title{Historian}
 \usage{
 Historian(Directory)
 }
@@ -13,6 +13,9 @@ Historian(Directory)
 Current time stamp
 }
 \description{
+A Function to Document Executed Codes by Date with Continuous Time Stamps Separating Different Entries
+}
+\details{
 This function was designed to facilitate lab note documentation while help maintain a minimum clean history window. Executed codes will be stored automatically in the History folder in the directory assigned.
 }
 \examples{
