@@ -1,6 +1,6 @@
 # R/RHelper
 
-![version](https://img.shields.io/badge/version-1.9.3-blue)
+![version](https://img.shields.io/badge/version-1.9.4-blue)
 [![R-CMD-check](https://github.com/cwy20030/RHelper/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/cwy20030/RHelper/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/RHelper)](https://cran.r-project.org/package=RHelper)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
