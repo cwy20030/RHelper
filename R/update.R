@@ -59,7 +59,9 @@ update = function(){
 
 
   if (GitVersion > LocalVersion) {
-    detach("package:RHelper", unload = TRUE)
+    if ("package:RHelper" %in% search()) {
+    detach("package:RHelper", unload = TRUE, character.only = TRUE)
+    }
     devtools::install_github("cwy20030/RHelper", force = T)
   }
 

@@ -22,8 +22,8 @@
 #'
 #' @description
 #' A function to automatically document files' properties contained in the directery/path specified.
-#' @details
 #'
+#' @details
 #' This function lists and documents all files contained within one or more directories (i.e., computer paths to folders of interest) specified by the user. This is suitable if one wish to import files from multiple folders into a data.list for analysis.
 #'
 #' @param Dirs Directory of where the files that you want to document <e.g. "C:/Users/___YOUR USERNAME___/UPSTREAM FOLDER/.../FOLDER NAME/">
